@@ -890,29 +890,30 @@ if (params$private_info) {
   # put accepted full papers to private share
   library("googledrive")
   googledrive::drive_auth(use_oob = TRUE)
+  submissions_and_reviews <- "https://drive.google.com/drive/folders/1CvcrOaooQK_2rFKU2v0MGQZmiLfTgk6S"
   
   sapply(list.files(review_files_path, pattern = "pdf", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
-                            path = "https://drive.google.com/drive/folders/1A_fqbv1I5hdwdNf3Kr8adB13cRqmDcqH")
+                            path = submissions_and_reviews)
   })
   
   sapply(list.files(review_files_path, pattern = "reviews", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
-                            path = "https://drive.google.com/drive/folders/1A_fqbv1I5hdwdNf3Kr8adB13cRqmDcqH")
+                            path = submissions_and_reviews)
   })
   
   sapply(list.files(review_files_path, pattern = "authors", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
-                            path = "https://drive.google.com/drive/folders/1A_fqbv1I5hdwdNf3Kr8adB13cRqmDcqH")
+                            path = submissions_and_reviews)
   })
   
   # upload review data file for manual import (see above)
   googledrive::drive_put(media = review_data_csv_file,
                          name = basename(review_data_csv_file),
-                         path = "https://drive.google.com/drive/folders/1A_fqbv1I5hdwdNf3Kr8adB13cRqmDcqH")
+                         path = submissions_and_reviews)
 }
 ```
 
@@ -1048,8 +1049,8 @@ drive_put(media = "agile-reproducibility-reviews.html",
           name = paste0("agile-reproducibility-reviews_",
                  ifelse(params$private_info, "PRIVATE", "public"),
                  ".html"),
-          path = as_dribble("https://drive.google.com/drive/folders/1Y2905cRV1APIE0fSbX7Kmy-xvRMXj_0y"))
-drive_put("agile-reproducibility-reviews.Rmd", path = as_dribble("https://drive.google.com/drive/folders/1Y2905cRV1APIE0fSbX7Kmy-xvRMXj_0y"))
+          path = as_dribble("https://drive.google.com/drive/folders/1EC3es2ia4XzchWy6-QuVam28E9teDBe9"))
+drive_put("agile-reproducibility-reviews.Rmd", path = as_dribble("https://drive.google.com/drive/folders/1EC3es2ia4XzchWy6-QuVam28E9teDBe9"))
 ```
 
 ```{r render_public_version, eval=FALSE, include=FALSE}
