@@ -43,21 +43,7 @@ library("tabulizer")
 set.seed(25) # 25th AGILE!
 ```
 
-## Submitted papers
-
-```{r local_paths, echo=FALSE}
-submissions_path <- here::here("submissions")
-dir.create(submissions_path, recursive = TRUE, showWarnings = FALSE)
-
-review_files_path <- here::here("review-material")
-dir.create(review_files_path, recursive = TRUE, showWarnings = FALSE)
-
-cr_path <- here::here("camera-ready-full-papers")
-```
-
-### EasyChair login
-
-```{r easychair_login}
+```{r easychair_login, echo=params$private_info}
 if(is.na(Sys.getenv("easychair_username", unset = NA)) || is.na(Sys.getenv("easychair_password", unset = NA))) {
   stop("Provide login details for EasyChair (e.g., in a file `.Renviron` - make sure to adjust read persmissions so that no user but you/root may access the file!) in environment variables",
        "`easychair_username` and `easychair_password`")
@@ -74,16 +60,27 @@ if(is.null(login_response)) {
 }
 ```
 
+## Submitted papers
+
+```{r local_paths, echo=FALSE}
+submissions_path <- here::here("submissions")
+dir.create(submissions_path, recursive = TRUE, showWarnings = FALSE)
+
+review_files_path <- here::here("review-material")
+dir.create(review_files_path, recursive = TRUE, showWarnings = FALSE)
+
+cr_path <- here::here("camera-ready-full-papers")
+```
+
+```{r conference_id, echo=FALSE}
+conference_id <- "28425498"
+```
+
 ### Submission metadata
 
 Retrieve all information about submissions from the EasyChair submissions system.
 The full submission information is not included in the public rendering of this report.
 Make sure that the shown columns in the submission table include the colums required in the code below.
-
-```{r conference_id}
-conference_id <- "28425498"
-```
-
 
 ```{r submissions, echo=FALSE}
 submission_page <- httr::GET(url = paste0("https://easychair.org/conferences/submissions?a=", conference_id))
@@ -329,7 +326,7 @@ dasa_stats %>%
 The following table shows the first `r excerpt_length` characters of these sections.
 `r if(!params$private_info) {"-->"}`
 
-```{r dasa_section_table_md, echo=FALSE}
+```{r dasa_section_table_md, echo=FALSE, eval=params$private_info}
 if(params$private_info) {
   dasa_texts %>%
     arrange(id) %>%
@@ -480,7 +477,7 @@ word_counts_sums %>%
 
 There is "accept" and "conditionally accept" (after second review)!
 
-```{r scrape_accepted, echo=FALSE}
+```{r scrape_accepted, echo=FALSE, eval=params$private_info}
 submission_table %>%
   filter(type == "Full-paper submission") %>%
   group_by(decision) %>%
@@ -489,7 +486,7 @@ submission_table %>%
   kable_styling("striped")
 ```
 
-```{r compile review data, echo=FALSE}
+```{r compile review data, echo=FALSE, eval=params$private_info}
 #page <- httr::GET(url = "https://easychair.org/conferences/status?a=26091618")
 #review_status_page <- xml2::read_html(page)
 #review_table <- rvest::html_table(html_nodes(review_status_page, ".paperTable")[[1]], header = TRUE)
@@ -555,7 +552,7 @@ dasa_vs_accepted %>%
   kable_styling("striped")
 ```
 
-```{r accepted_dasa_barplot_label}
+```{r accepted_dasa_barplot_label, echo=FALSE}
 review_data_figure_label <- if(params$private_info) {
   "Barplot of Data and Software Availability sections across accepted and rejected full paper submissions"
 } else {
@@ -596,7 +593,7 @@ review_data_figure
 
 ### Which accepted papers do still not hava a DASA section
 
-```{r accepted_no_dasa}
+```{r accepted_no_dasa, eval=params$private_info}
 review_data %>%
   filter(type == "Full-paper submission") %>%
   dplyr::filter(decision == "ACCEPT", is.na(`dasa_text`)) %>%
@@ -608,7 +605,7 @@ review_data %>%
 _Does not work reliably yet._
 These are the papers where the reproducibility review resulted in at least partially successful reproduction.
 
-```{r report_links}
+```{r report_links, eval=params$private_info}
 # hope that at least on of the phrases is not stretched across multiple spaces
 report_pattern <- regex("(AGILE[:space:]reproducibility[:space:]review|reproducibility[:space:]report)", ignore_case = TRUE)
 tidy_texts <- tidy_texts %>%
@@ -653,25 +650,23 @@ review_data_csv_file <- file.path(review_files_path, "review_data.csv")
 1. Write paper metadata (ID, decision, title) to a CSV file `r review_data_csv_file`
 1. **Manually** [import the paper metadata into the spreadsheet](https://www.tillerhq.com/how-to-import-csv-into-a-google-spreadsheet/) (Select cell `A1` then "File" > "Import" > "Import File" > "My Drive" then search for `review_data` and find `review_data.csv` then select the file > "Replace data at selected cell" and click "Import data")
 
-```{r accepted_fp_files_download_easychair, echo=FALSE, eval=TRUE}
-if (params$private_info) {
-  review_files <- review_data %>%
-    filter(type == "Full-paper submission") %>%
-    dplyr::filter(decision == "ACCEPT") %>%
-    select(id, submission_id, decision, title, file, paper)
-  
-  # first, re-download all accepted full paper PDFs to make sure we have latest copies
-  for (i in 1:nrow(review_files)) {
-    current <- review_files[i,]
-    filename <- file.path(review_files_path, paste0(current$id, ".pdf"))
-    httr::GET(url = current$paper,
-                httr::write_disk(path = filename,
-                                 overwrite = TRUE))
-  }
+```{r accepted_fp_files_download_easychair, echo=FALSE, eval=params$private_info}
+review_files <- review_data %>%
+  filter(type == "Full-paper submission") %>%
+  dplyr::filter(decision == "ACCEPT") %>%
+  select(id, submission_id, decision, title, file, paper)
+
+# first, re-download all accepted full paper PDFs to make sure we have latest copies
+for (i in 1:nrow(review_files)) {
+  current <- review_files[i,]
+  filename <- file.path(review_files_path, paste0(current$id, ".pdf"))
+  httr::GET(url = current$paper,
+              httr::write_disk(path = filename,
+                               overwrite = TRUE))
 }
 ```
 
-```{r update_camera_ready_file_paths, echo=FALSE}
+```{r update_camera_ready_file_paths, echo=FALSE, eval=params$private_info}
 # Use this chunk if camera ready files are not managed via EasyChair
 review_files <- review_data %>%
   filter(type == "Full-paper submission") %>%
@@ -687,7 +682,7 @@ for (i in 1:nrow(review_files)) {
 }
 ```
 
-```{r review_data_csv, echo=FALSE}
+```{r review_data_csv, echo=FALSE, eval=params$private_info}
 readr::write_csv(review_files %>%
                    select(ID = id, Decision = decision, Title = title),
                  path = review_data_csv_file,
@@ -696,7 +691,7 @@ readr::write_csv(review_files %>%
 
 #### Reviewer comments
 
-```{r reviewer_comments, echo=FALSE}
+```{r reviewer_comments, echo=FALSE, eval=params$private_info}
 # get review contents for each paper
 
 # Example page: https://easychair.org/conferences/submission_reviews?a=26091618;submission=5333543
@@ -780,7 +775,7 @@ for(i in c(1:nrow(review_files))) {
 
 #### Author contacts
 
-```{r author_contacts, echo=FALSE}
+```{r author_contacts, echo=FALSE, eval=params$private_info}
 # Example page: https://easychair.org/conferences/submission_view?a=26091618;submission=5333543
 retrieve_authors <- function(id, submission_id, authors, title) {
   url <- parse_url("https://easychair.org/conferences/submission_view")
@@ -885,7 +880,7 @@ for(i in c(1:nrow(review_files))) {
 
 #### Upload submissions, reviews, and author contacts, to share
 
-```{r review_files_upload_to_share, echo=FALSE}
+```{r review_files_upload_to_share, echo=FALSE, eval=params$private_info}
 if (params$private_info) {
   # put accepted full papers to private share
   library("googledrive")
@@ -1021,7 +1016,9 @@ Best regards,
 AGILE Reproducibility Committee 2022
 ```
 
+<!--
 TODO: pre-fill the templates with the information and save to the `xxx_authors.html` file, with a ready to click link for the corresponding author email.
+-->
 
 ## Colophon
 
