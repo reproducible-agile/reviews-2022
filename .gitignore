@@ -20,3 +20,5 @@ reports/.Renviron
 .Renviron
 
 review-material/
+
+.cache/

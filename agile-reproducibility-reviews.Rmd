@@ -95,8 +95,9 @@ names(submission_table) <- c("id", "authors", "title", "information", "paper", "
                              "time"
                              ,"decision"
                              )
-# manually add type, short papers submissions come later
-submission_table$type <- "Full-paper submission"
+warning("manually adding submission type, table does not have it this year")
+submission_table$type <- c(rep("Full-paper submission", times = 26), rep("Short-paper submission", times = nrow(submission_table) - 26))
+
 submission_table$id <- str_pad(submission_table$id, width = 3, side = "left", pad = "0")
 submission_table <- submission_table  %>%
   mutate_if(is.character, list(~na_if(.,"")))
@@ -107,10 +108,16 @@ submission_table$information <- paste("https://easychair.org",
 
 submission_table$submission_id <- str_match(submission_table$information, pattern = "submission=([[:digit:]]+)")[,2]
 submission_table$paper <- paste("https://easychair.org",
-                                links[str_detect(links, pattern = "download")],
+                                sapply(submission_table$submission_id, function(x) { links[str_detect(links, pattern = paste0(".*download.*", x))] }),
                                 sep = "")
+for (i in 1:nrow(submission_table)) {
+  if(!is.na(str_match(submission_table[i,]$paper, "character\\(0\\)"))) {
+    submission_table[i,]$paper <- NA
+  }
+}
 
-# 1 and 2 are tests
+
+warnings("removing submissions 1 and 2, they are tests this year")
 submission_table <- submission_table[3:nrow(submission_table),]
 
 submission_table %>%
@@ -166,11 +173,17 @@ The stop words include specific words, which might be included in the page heade
 texts <- list()
 for (i in 1:nrow(submission_table)) {
   current <- submission_table[i,]
-  #cat("Reading ", current$file, "\n")
+  cat("Reading ", current$file, "\n")
   the_text <- NA
   if(!is.na(current$file)) {
-    the_text <- tabulizer::extract_text(current$file)
-    the_text <- str_c(the_text, collapse = TRUE)
+    tryCatch({
+      the_text <- tabulizer::extract_text(current$file)
+      the_text <- str_c(the_text, collapse = TRUE)
+      },
+      error = function(e) { warning("Text from ", current$id, " could not be loaded: ", toString(e))}
+    )
+  } else {
+    warning("No text available for paper ", current$id, " ", current$title)
   }
   
   names(the_text) <- current$id
@@ -253,7 +266,7 @@ type_counts_totals <- submission_table %>%
   tally()
 type_counts_totals$type <- c("Full-paper submission"
                              #, "Poster submission"
-                             #, "Short-paper submission"
+                             , "Short-paper submission"
                              )
 type_counts_totals <- paste(
   paste(type_counts_totals$type, type_counts_totals$n, sep = ":"),
@@ -518,76 +531,6 @@ if(params$private_info) {
 }
 ```
 
-### How does acceptance relate to DASA section availability for full papers?
-
-```{r accepted_dasa, echo=FALSE}
-dasa_vs_accepted <- tibble(papers = c("submitted",
-                  "submitted with DASA",
-                  "accepted",
-                  "accepted with DASA",
-                  "rejected with DASA"),
-       n = c(review_data %>%
-               filter(type == "Full-paper submission") %>%
-               nrow(.),
-             review_data %>%
-               filter(type == "Full-paper submission") %>%
-               filter(!is.na(dasa_text)) %>% 
-               nrow(.),
-             review_data %>%
-               dplyr::filter(decision == "ACCEPT") %>%
-               filter(type == "Full-paper submission") %>%
-               nrow(.),
-             review_data %>%
-               dplyr::filter(decision == "ACCEPT") %>%
-               filter(type == "Full-paper submission") %>%
-               filter(!is.na(dasa_text)) %>% 
-               nrow(.),
-             review_data %>%
-               dplyr::filter(decision == "REJECT") %>% 
-               filter(!is.na(dasa_text)) %>% 
-               nrow(.))
-)
-dasa_vs_accepted %>%
-  kable() %>%
-  kable_styling("striped")
-```
-
-```{r accepted_dasa_barplot_label, echo=FALSE}
-review_data_figure_label <- if(params$private_info) {
-  "Barplot of Data and Software Availability sections across accepted and rejected full paper submissions"
-} else {
-  "Barplot of Data and Software Availability sections across accepted full paper submissions"
-}
-```
-
-```{r accepted_dasa_barplot, echo=FALSE, fig.cap=review_data_figure_label, fig.height=4}
-if(params$private_info) {
-  review_data_figure_data <- review_data %>%
-    mutate(`has DASA` = !is.na(dasa_text)) %>%
-    filter(!is.na(decision)) %>%
-    filter(type == "Full-paper submission") %>%
-    group_by(type, `has DASA`, decision) %>%
-    summarise(n = n())
-} else {
-  review_data_figure_data <- review_data %>%
-    mutate(`has DASA` = !is.na(dasa_text)) %>%
-    filter(!is.na(decision)) %>%
-    filter(type == "Full-paper submission", decision == "ACCEPT") %>%
-    group_by(type, `has DASA`, decision) %>%
-    summarise(n = n())
-}
-
-review_data_figure <- review_data_figure_data  %>%
-    ggplot(aes(x = decision, y = n, fill = `has DASA`)) +
-    geom_bar(stat="identity", width = 0.5) + 
-    scale_fill_brewer(palette="Paired") +
-    labs(title = "AGILE 2022 Submissions: Transparency & Reproducibility",
-         subtitle = "Data and Software Availability Sections (DASA) across full papers") +
-    theme_minimal() + 
-    theme(axis.title.y = element_text(angle = 360, hjust = 1, vjust = 0.5))
-
-review_data_figure
-```
 
 `r if(!params$private_info) {"<!--"}`
 
@@ -685,7 +628,7 @@ for (i in 1:nrow(review_files)) {
 ```{r review_data_csv, echo=FALSE, eval=params$private_info}
 readr::write_csv(review_files %>%
                    select(ID = id, Decision = decision, Title = title),
-                 path = review_data_csv_file,
+                 file = review_data_csv_file,
                  append = FALSE)
 ```
 
@@ -887,28 +830,30 @@ if (params$private_info) {
   googledrive::drive_auth(use_oob = TRUE)
   submissions_and_reviews <- "https://drive.google.com/drive/folders/1CvcrOaooQK_2rFKU2v0MGQZmiLfTgk6S"
   
+  
+  # upload review data file for manual import (see above)
+  googledrive::drive_put(media = review_data_csv_file,
+                         name = basename(review_data_csv_file),
+                         path = submissions_and_reviews)
+  
+  # upload submission files
   sapply(list.files(review_files_path, pattern = "pdf", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
                             path = submissions_and_reviews)
   })
   
+  # upload reviewe and contact information
   sapply(list.files(review_files_path, pattern = "reviews", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
                             path = submissions_and_reviews)
   })
-  
   sapply(list.files(review_files_path, pattern = "authors", full.names = TRUE), function(the_file) {
      googledrive::drive_put(media = the_file,
                             name = basename(the_file),
                             path = submissions_and_reviews)
   })
-  
-  # upload review data file for manual import (see above)
-  googledrive::drive_put(media = review_data_csv_file,
-                         name = basename(review_data_csv_file),
-                         path = submissions_and_reviews)
 }
 ```
 
@@ -937,6 +882,23 @@ if (params$private_info) {
 7. Add link to the OSF project in the master spreadsheet
 
 ### Author contact templates
+
+#### Reminder DASA by reproducibility chair
+
+```
+Dear <AUTHORS>,
+
+I'm contacting you as the corresponding author of the paper "<TITLE>" submitted to AGILE 2022.
+
+In my screening of accepted papers I saw that your submission does not include a Data and Software Availability ("DASA") section. Please note that a DASA section with precisely that name is mandatory. Furthermore a successful reproduction of your workflow would be an advertisement for your paper.
+
+Please provide the DASA section by the end of the week so we can start the reproducibility review.
+
+Regards,
+Daniel
+
+AGILE Reproducibility Committee Chair 2022
+```
 
 #### Reminder DASA
 
