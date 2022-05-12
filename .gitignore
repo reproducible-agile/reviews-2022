@@ -22,3 +22,7 @@ reports/.Renviron
 review-material/
 
 .cache/
+
+.TinyTeX/
+
+bin/
