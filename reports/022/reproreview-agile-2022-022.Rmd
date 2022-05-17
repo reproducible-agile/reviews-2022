@@ -1,0 +1,182 @@
+---
+title: "Reproducibility review of: Automated Extraction of Labels from Large-Scale Historical Maps"
+author: "Daniel Nüst \\orcid{0000-0002-0024-5046}"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: false
+papersize: a4
+header-includes:
+  - |
+    % https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex/445583 (works with pdflatex)
+    \usepackage{scalerel}
+    \usepackage{tikz}
+    \usetikzlibrary{svg.path}
+    \definecolor{orcidlogocol}{HTML}{A6CE39}
+    \tikzset{
+      orcidlogo/.pic={
+        \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                     svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z     M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                     svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+      }
+    }
+    \newcommand\orcid[1]{\href{https://orcid.org/#1}{\raisebox{0.15 em}{\mbox{\scalerel*{
+    \begin{tikzpicture}[yscale=-1, transform shape]
+    \pic{orcidlogo};
+    \end{tikzpicture}
+    }{|}}}}}
+    \definecolor{agileblue}{RGB}{0,77,155}
+urlcolor: agileblue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r logo, eval=TRUE, echo=FALSE, message=FALSE, fig.align='center', out.width='0.3\\linewidth', fig.pos='H'}
+temp <- tempfile(fileext = ".pdf")
+download.file(url = "https://reproducible-agile.github.io/public/images/reproducible-AGILE-logo-square.pdf", destfile = temp)
+knitr::include_graphics(temp)
+```
+
+This report is part of the reproducibility review at the AGILE conference.
+For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
+This document is published on OSF at https://osf.io/anv9r/.
+To cite the report use
+
+> _TODO_
+
+# Reviewed paper
+
+> _TODO_
+
+# Summary
+
+The article present an experimental evaluation of a positioning system.
+Naturally, the physical/practial experiments could not be reproduced as part of this check of the computational reproducibility.
+However, the one figure in the article that is based on the data from the experiment, as well as the software for running the experiment shown in screenshots in the paper could be reproduced by me.
+With respect to the computational aspects and data visualisation, the given paper is reproducible.
+
+\clearpage
+
+# Reproducibility reviewer notes
+
+After a brief initial evaluation and contact, the authors quickly provided updated links and documentation to the required software and data, and even updated the manuscript accordingly.
+
+## Figure 4
+
+Data and code for reproducing Fig. 4 in Section 4.4 of the paper are available at <https://doi.org/10.17605/OSF.IO/E48HX>.
+The OSF project only includes the GitHub repository at <https://github.com/YouQam/experimental-evaluation-ble-beacon> which I forked into the Reproducible AGILE organisation at the start of the reproducibility review: <https://github.com/reproducible-agile/experimental-evaluation-ble-beacon>
+
+From there, the following steps renders the given Rmd document successfully:
+
+```{bash, eval=FALSE}
+git clone https://github.com/reproducible-agile/experimental-evaluation-ble-beacon
+```
+
+```{r reproduction}
+rmarkdown::render("experimental-evaluation-ble-beacon/Qamaz-etal-2022.Rmd")
+```
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+The created document includes a figure that matches Figure 4 with the exception of plot margins and therefore the legend overlaps the graph.
+
+```{r}
+file.copy("experimental-evaluation-ble-beacon/Qamaz-etal-2022_files/figure-gfm/unnamed-chunk-4-1.png", "figure4.png", overwrite = TRUE)
+knitr::include_graphics("figure4.png")
+```
+
+The provided Binder link does work, but only after manually installing missing packages, because the given `install.r` file seems not to be picked up (cf. [pull request](https://github.com/YouQam/experimental-evaluation-ble-beacon/pull/1)).
+Then the created output is the same as in my own environment.
+
+
+## Experiment game
+
+The given paper collects data with human participants based on a game call GeoGami, and the used version is available in a branch on GitHub at <https://github.com/origami-team/origami/tree/ibeacon_integration_v3>.
+Compared to the regular codebase (<https://github.com/origami-team/origami/compare/ibeacon_integration_v3>) the branch does indeed seem to include code for communicating with beacons and creating a game variant based on beacons.
+**Without access to the beacon hardware, it's not possible for me to fully evaluate this part of the research.**
+However, I'll see if I can build and run the game software at least.
+
+The README includes documentation for building the app locally and for mobile operating systems.
+I try the former, though the documentation is very sparse and stops with the install, lacking information on build and usage.
+
+```{bash geogami-clone, eval=FALSE}
+git clone https://github.com/origami-team/origami
+cd origami
+git checkout ibeacon_integration_v3
+```
+
+```{bash yarn, eval=FALSE}
+$ docker run --rm -it -v $(pwd):/origami node:16-buster /bin/bash
+
+# in the container (outputs abbreviated):
+cd /origami/
+yarn install
+# [..]
+yarn run build-browser
+# [...]
+```
+There were problems with using the latest Node.js, `18`, but switching back to `16` did the trick:
+The `build-browser` script in the `package.json` created a directory `www`.
+Exploring this with a webserver:
+
+```{bash www, eval=FALSE}
+docker run --rm -p 80:80 -v $(pwd)/www:/usr/share/nginx/html nginx
+```
+
+Gives me the UI of the GeoGami game, including some settings for Beacons.
+
+```{r screenshot-geogami}
+knitr::include_graphics("geogami-screenshot-scan.jpg")
+```
+
+
+## FIXME! Not sure what I can do now - FIXME!
+
+
+# Comments to the authors
+
+- Good job, using Binder!
+- Please consider creating a registration for your OSF project - only then the files from the GitHub repo are properly archived, see <https://osf.io/e48hx/registrations>
+- Add GeoGami to the OSF project (before creating a registration) so that tool is also archived
+- The "MIT" license given in the GitHub repository is not suitable for data; see, e.g., <https://opendatacommons.org/faq/licenses/>
+- Fix your plot margins and figure size in the code
+- GeoGami should have a proper citation (i.e., archive to Zenodo/Software Heritage and add suggested citation in README)
+- Take advantage of the fact that you have an OSF repo and add additional information there, e.g., a screencast/video of the app or more screenshots than you could fit into the paper.
+
+```{r, echo=FALSE, eval=FALSE, results='hide'}
+# create ZIP of reproduction files and upload to OSF
+library("zip")
+library("here")
+
+#zipfile <- here::here("022/reproreview-agile-2022-022.zip")
+#file.remove(zipfile)
+#zip::zipr(zipfile = zipfile,
+#          files = c(here::here("005/Dockerfile")))
+
+library("osfr") # See docs at https://docs.ropensci.org/osfr/
+# OSF_PAT is in .Renviron in parent directory
+# We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
+
+# retrieve project
+project <- osfr::osf_retrieve_node("8b7mr")
+
+# upload files
+osfr::osf_upload(x = project,
+                 conflicts = "overwrite",
+                 path = c(list.files(here::here("005"),
+                                     pattern = "reproreview-agile-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE)
+                          )
+                 )
+```
