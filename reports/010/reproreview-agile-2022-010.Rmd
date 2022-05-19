@@ -1,0 +1,1245 @@
+---
+title: "Reproducibility review of: Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility"
+author: "Carlos Granell \\orcid{0000-0003-1004-9695}"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: false
+papersize: a4
+header-includes:
+  - |
+    % https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex/445583 (works with pdflatex)
+    \usepackage{scalerel}
+    \usepackage{tikz}
+    \usetikzlibrary{svg.path}
+    \definecolor{orcidlogocol}{HTML}{A6CE39}
+    \tikzset{
+      orcidlogo/.pic={
+        \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                     svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z     M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                     svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+      }
+    }
+    \newcommand\orcid[1]{\href{https://orcid.org/#1}{\raisebox{0.15 em}{\mbox{\scalerel*{
+    \begin{tikzpicture}[yscale=-1, transform shape]
+    \pic{orcidlogo};
+    \end{tikzpicture}
+    }{|}}}}}
+    \definecolor{agileblue}{RGB}{0,77,155}
+urlcolor: agileblue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r logo, eval=TRUE, echo=FALSE, message=FALSE, fig.align='center', out.width='0.3\\linewidth', fig.pos='H'}
+temp <- tempfile(fileext = ".pdf")
+download.file(url = "https://reproducible-agile.github.io/public/images/reproducible-AGILE-logo-square.pdf", destfile = temp)
+knitr::include_graphics(temp)
+```
+
+This report is part of the reproducibility review at the AGILE conference.
+For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
+This document is published on OSF at OSF LINK HERE.
+To cite the report use
+
+> Granell, C. (2022, May 13). Reproducilbility review of: Optimizing Electric Vehicle Charging Schedules Based on
+Probabilistic Forecast of Individual Mobility,
+
+# Reviewed paper
+
+Cai, H., Xin, Y., Martin, H.,  and Raubal, M.: Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility, AGILE GIScience Ser., 3
+
+# Summary
+
+The provided workflow was **partially reproduced**. 
+
+Your paper does 
+
+The authors included a Data and Software Availability ("DASA") section, where a link to an anonymous github repo was provided. It contains a landing page with detailed instructions and an entry point (`main` script) to run the entire analysis. The authors also specified which scripts are involved in the different outputs of the paper (tables, figures, etc). The authors claimed that input data cannot be disclosed. After communicating with authors, they provided me a few synthetic input samples (CSV format) to run the probabilistic models and charging strategies for simulation and evaluation, therefore skipping the need to access and getting real data from a remote database, as coded in the original `main` scripts. Because only synthetic samples are provided, there are differences between the results of the reproduction and the ones in the original paper.
+
+The reproduction described in this report uses the Python code provided in a Github repo. Even though the reproduction exercise with synthetic data failed during the last step of the script, I can consider the paper was *partially reproducible*.
+
+\clearpage
+
+# Reproducibility reviewer notes
+
+The original paper submission did not provide a link to the input data. All scripts were provided on an anonymised Github repo <https://anonymous.4open.science/r/agile22_evprediction-2F28/README.md>. I got synthetic data via email by authors. Given a project folder, all scripts are included in the  `<project-folder>/code` folder and synthetic data in the `<project-folder/data` folder. The authors updated the scripts on the anonymised Github repo (addition of comments, basically) to facilitate the reproduction check. In particular, I commented the code in `main.py` that refers to get real data from a remote database to use instead the synthetics data, and adjusted some file paths. Next, I followed the steps below.
+
+```{bash init, eval=FALSE, size="scriptsize"}
+cgranell@DESKTOP-1PKOUTF:~/code/$ mkdir agile2022-010
+cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ cd agile2022-010
+cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ python3 -m venv venv --prompt="agile2022-010"
+cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ source venv/bin/activate
+
+# Installing dependencies
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ python -m pip install geopandas, matplotlib, statsmodels
+
+# Installing skgarden through github. Despite the errors on the console, it was successfully installed
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ python -m pip install skgarden
+ERROR: Could not find a version that satisfies the requirement skgarden (from versions: none)
+ERROR: No matching distribution found for skgarden
+
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ python -m pip install git+https://github.com/scikit-garden/scikit-garden
+Collecting git+https://github.com/scikit-garden/scikit-garden
+  Cloning https://github.com/scikit-garden/scikit-garden to /tmp/pip-req-build-mh2llzdv
+  Running command git clone -q https://github.com/scikit-garden/scikit-garden /tmp/pip-req-build-mh2llzdv
+Requirement already satisfied: numpy in ./venv/lib/python3.8/site-packages (from scikit-garden==0.1.3) (1.22.3)
+Collecting scikit-learn>=0.22
+  Using cached scikit_learn-1.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26.7 MB)
+Requirement already satisfied: scipy in ./venv/lib/python3.8/site-packages (from scikit-garden==0.1.3) (1.8.0)
+Requirement already satisfied: six in ./venv/lib/python3.8/site-packages (from scikit-garden==0.1.3) (1.16.0)
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting joblib>=0.11
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Building wheels for collected packages: scikit-garden
+  Building wheel for scikit-garden (setup.py) ... error
+  ERROR: Command errored out with exit status 1:
+   command: /home/cgranell/code/agile2022-010/venv/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-req-build-mh2llzdv/setup.py'"'"'; __file__='"'"'/tmp/pip-req-build-mh2llzdv/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-dtbsde7i
+       cwd: /tmp/pip-req-build-mh2llzdv/
+  Complete output (7 lines):
+  WARNING: The wheel package is not available.
+  usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+     or: setup.py --help [cmd1 cmd2 ...]
+     or: setup.py --help-commands
+     or: setup.py cmd --help
+  
+  error: invalid command 'bdist_wheel'
+  ----------------------------------------
+  ERROR: Failed building wheel for scikit-garden
+  Running setup.py clean for scikit-garden
+Failed to build scikit-garden
+Installing collected packages: threadpoolctl, joblib, scikit-learn, scikit-garden
+    Running setup.py install for scikit-garden ... done
+Successfully installed joblib-1.1.0 scikit-garden-0.1.3 scikit-learn-1.0.2 threadpoolctl-3.1.0
+
+# Copy scripts from anonymised repo in "code" folder
+
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ mkdir code
+
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ ls code/*.py
+code/calculate_feature_importance.py          code/evaluate_unidirectional_smartcharging.py
+code/calculate_under_overestimation.py        code/extract_arrival.py
+code/compare_baseline_bismart.py              code/extract_depart.py
+code/compare_baseline_unismart.py             code/extract_evfeatures.py
+code/compare_probablistic_results.py          code/extract_mobility.py
+code/compare_three_charging_onpeakdef2.py     code/extract_soc.py
+code/evaluate_bidirectional_smartcharging.py  code/main.py
+code/evaluate_uncontrolled_charging.py        code/predict_probablistic_results.py
+
+
+# Copy synthetic input samples in "data" folder
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ mkdir data
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ ls -R data
+data:
+inputs
+
+data/inputs:
+arrival_prediction
+auction_spot_prices_switzerland_2017_syn.csv
+depart_prediction
+electricity_load_profile_day_Jun2nd.csv
+soc_prediction
+
+data/inputs/arrival_prediction:
+1_input.csv
+2_input.csv
+3_input.csv
+
+data/inputs/depart_prediction:
+1_input.csv
+2_input.csv
+3_input.csv
+
+data/inputs/soc_prediction:
+1_input.csv
+2_input.csv
+3_input.csv
+
+```
+
+Execution of the `main.py` script. The outpot on teh consilo is aquite large, so I include here some part of the output, including the generated error at the end of the execution of the `main.py` script. 
+
+```{bash main, eval=FALSE, size="scriptsize"}
+# in ./agile2022-010
+(agile2022-010) cgranell@DESKTOP-1PKOUTF:~/code/agile2022-010$ python3 code/main.py
+Current working directory: /home/cgranell/code/agile2022-010
+##REPRODUCTION CHECK##: Run Quantile Regression Predictions
+3dayavr
+START------------------------------
+soc
+lqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+lqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+qrf_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+qrf
+---------------------START--------------------------
+1
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+gbqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'ev_duration_3dayavr',
+       'ev_dist_3dayavr', 'radgyr_3dayavr', 'avrjumplen_3dayavr',
+       'top10locfre_3dayavr', 'ecar_hhindex_3dayavr', 'weekend_flag', 'soc_p1',
+       'soc_p2', 'soc_p3'],
+      dtype='object')
+12
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+gbqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       1.0
+1       2.0
+2       0.5
+3      67.0
+4      87.0
+       ... 
+194    81.5
+195    61.5
+196    60.5
+197     7.0
+198     6.5
+Name: soc, Length: 199, dtype: float64
+2
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       0.5
+1       2.5
+2       3.5
+3      37.0
+4      46.5
+       ... 
+253    61.5
+254     3.0
+255    30.0
+256     9.0
+257    41.5
+Name: soc, Length: 258, dtype: float64
+3
+Index(['day_of_week', 'ev_duration_3dayavr', 'ev_dist_3dayavr', 'weekend_flag',
+       'soc_p1', 'soc_p2', 'soc_p3'],
+      dtype='object')
+7
+0       5.5
+1       6.0
+2      68.0
+3      77.5
+4      21.0
+       ... 
+269     9.5
+270    19.0
+271    19.5
+272    19.0
+273    10.0
+Name: soc, Length: 274, dtype: float64
+depart
+lqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+lqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+qrf_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+qrf
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+gbqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'depart_p1', 'depart_p2', 'depart_p3'],
+      dtype='object')
+9
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+gbqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0       9.783056
+1       7.369727
+2       7.314597
+3      19.645551
+4      24.000000
+         ...    
+429     9.178611
+430     9.259167
+431     8.375833
+432     9.425833
+433    24.000000
+Name: depart_float, Length: 434, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      16.017116
+1       6.174167
+2       7.948056
+3      19.007569
+4      11.058333
+         ...    
+294     5.545866
+295     9.120394
+296    13.243917
+297     6.311245
+298     7.786509
+Name: depart_float, Length: 299, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'depart_p1', 'depart_p2', 'depart_p3'], dtype='object')
+5
+0      17.884625
+1      12.002403
+2       8.950866
+3      10.461139
+4      10.976847
+         ...    
+412    13.254444
+413     5.775000
+414     7.464444
+415    15.018611
+416    24.000000
+Name: depart_float, Length: 417, dtype: float64
+arrival
+lqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+lqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+qrf_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+qrf
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+gbqr_mob
+---------------------START--------------------------
+1
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'realentro_3dayavr', 'radgyr_3dayavr',
+       'avrjumplen_3dayavr', 'top10locfre_3dayavr', 'weekend_flag',
+       'arrival_p1', 'arrival_p2', 'arrival_p3'],
+      dtype='object')
+9
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+gbqr
+---------------------START--------------------------
+1
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      21.534167
+1      20.613662
+2      19.645551
+3      22.909903
+4      17.603444
+         ...    
+425    17.302222
+426    15.350556
+427    16.310278
+428    19.896944
+429    16.257222
+Name: arrival_float, Length: 430, dtype: float64
+2
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      20.383056
+1      20.369324
+2      18.187500
+3      16.514787
+4      21.167375
+         ...    
+250    16.617315
+251    19.556801
+252    16.581560
+253    21.173500
+254    20.691764
+Name: arrival_float, Length: 255, dtype: float64
+3
+Index(['day_of_week', 'weekend_flag', 'arrival_p1', 'arrival_p2',
+       'arrival_p3'],
+      dtype='object')
+5
+0      22.384718
+1      22.006981
+2      20.128889
+3      17.662208
+4      22.668546
+         ...    
+378    21.835278
+379    18.335833
+380    17.041667
+381    20.232778
+382    20.276111
+Name: arrival_float, Length: 383, dtype: float64
+
+[Skipeed intermediate results to aavoid a lengthy list of printed dates...]
+
+##REPRODUCTION CHECK##: Simulate uncontrolled charging as baseline
+1
+-------------START-----------------
+2
+-------------START-----------------
+3
+-------------START-----------------
+##REPRODUCTION CHECK##: Evaluate unidirectional smart charging compared with baseline
+Model type: qrf_mob
+Quantile prediction of soc: 0.5
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.55
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.6
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.65
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.7
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.75
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.8
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.85
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.9
+------------------------------
+------------------------------
+Model type: qrf_mob
+Quantile prediction of soc: 0.95
+------------------------------
+------------------------------
+qrf_mob_soc0.5
+On-peak hours [12, 13, 19, 20, 21, 22]
+Traceback (most recent call last):
+  File "code/main.py", line 309, in <module>
+    base_uni.evaluate_peakshaving_way2(model_type, mob_flags, soc_quan_list, LOADPROFILE_PATH, BASELINE_PATH, UNISMARTCHARGE_PATH, RESULT_PATH)
+  File "/home/cgranell/code/agile2022-010/code/compare_baseline_unismart.py", line 379, in evaluate_peakshaving_way2
+    base_max_time = base_load_hour.index[base_load_hour['load'] == base_max_load].values[0]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
+
+
+```
+
+
+```{r, echo=FALSE, eval=FALSE, results='hide'}
+# create ZIP of reproduction files and upload to OSF
+library("zip")
+library("here")
+
+zipfile <- here::here("PATH/agile-reproreview-YEAR-NUMBER.zip")
+file.remove(zipfile)
+zip::zipr(zipfile,
+          here::here("2020-018/files to add to the zip, if any"))
+
+library("osfr") # See docs at https://docs.ropensci.org/osfr/
+# OSF_PAT is in .Renviron in parent directory
+# We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
+
+# retrieve project
+project <- osfr::osf_retrieve_node("OSF ID")
+
+# upload files
+osfr::osf_upload(x = project,
+                 conflicts = "overwrite",
+                 path = c(list.files(here::here("PATH"),
+                                     pattern = "agile-reproreview-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE),
+                          "COPYRIGHT"
+                          )
+                 )
+```
