@@ -57,27 +57,32 @@ To cite the report use
 
 # Summary
 
-The authors provide all the data and code in their github repository. From a fresh install of R, the software environment is easily set up (5 R packages have to be installed). The authors provide two types of script (one sequential, i.e. R script, and one step by step, i.e. like a jupyter notebook). The code could be executed successfully and all the paper figures could be reproduced.
+The authors provide all the data and code in their GitHub repository. From a fresh install of R, the software environment is easily set up. The authors provide one R script and one computational notebook, which could be executed successfully to create all the paper's figures.
 
 \clearpage
 
 # Reproducibility reviewer notes
-1. Fork authors [repository](https://github.com/dataandcrowd/AGILE2022) into reproducible agile [repository](https://github.com/reproducible-agile/AGILE2022-16)
 
-2. Prepare R environment
-As mentioned by the authors in their github repository, the R version is 4.1.3. To maintain the proper functioning of potential others R projects, I used a docker image built by the [rocket-project](https://www.rocker-project.org/). The rocker/rstudio:4.1.3 image contains a Rstudio server with R version 4.1.3.
+## 1. Fork repository
+
+Fork the authors' [repository](https://github.com/dataandcrowd/AGILE2022) into reproducible agile [repository](https://github.com/reproducible-agile/AGILE2022-16)
+
+## 2. Prepare R environment
+
+As mentioned by the authors in their GitHub repository, the R version is 4.1.3. To maintain the proper functioning of potential others R projects, I used a docker image built by the [Rocker Project](https://www.rocker-project.org/). The image `rocker/rstudio:4.1.3` contains an RStudio server with R version 4.1.3.
 
 ```{bash docker, eval=FALSE, size="tiny"}
 sudo docker run -e ROOT=true -e PASSWORD=agile --rm -p 8787:8787 rocker/rstudio:4.1.3
 ```
-When the dockers is started, connect to rstudio studio with a web browser: [http://localhost:8787](http://localhost:8787), with credentials as follow :
+
+When the Docker container is started, I connect to RStudio with a web browser: [http://localhost:8787](http://localhost:8787), with credentials as follows:
 
 + login: rstudio
 + password: agile
 
+## 3. Install system libraries
 
-3. Install system libraries
-Using the docker's rstudio, go to the **"Terminal"** tab and add copy paste these instructions.
+In the containerised RStudio, I go to the **"Terminal"** tab and add copy paste these instructions to install system dependencies of required R packages.
 
 ```{bash apt, eval=FALSE, size="tiny"}
 sudo apt update
@@ -87,8 +92,9 @@ sudo apt install libgeos-dev libproj-dev libfontconfig1-dev # for tmap package
 sudo apt install r-base-dev r-cran-sf r-cran-raster r-cran-rjava # for tmap package
 ```
 
-4. Install R package 
-Using the docker's rstudio, go to the **"Console"** tab and add copy paste these instructions.
+## 4. Install R packages
+
+In the containerised RStudio, I go to the **"Console"** tab and add copy paste these instructions.
 
 ```{R renv, eval=FALSE, size="tiny"}
 # If you don't use docker
@@ -103,24 +109,25 @@ install.packages("spgwr")
 install.packages("spdep")
 ```
 
-5. Download the code
-Using the docker's rstudio, go to the **"Terminal"** tab and add copy paste these instructions.
+## 5. Download the code
+
+In the containerised RStudio, I go to the **"Terminal"** tab and add copy paste these instructions.
 
 ```{bash gitclone, eval=FALSE, size="tiny"}
 git clone https://github.com/reproducible-agile/AGILE2022-16
 cd AGILE2022-16
 ```
 
+## 6. Start reproduction
 
-6. Start reproducibility
-Using the docker's rstudio, go to the **"Console"** tab and add copy paste these instructions.
+In the containerised RStudio, I go to the **"Console"** tab and add copy paste these instructions.
 
 ```{R launch, eval=FALSE, size="tiny"}
 setwd("~/AGILE2022-16")
 source("AGILE2022.R")
 ```
 
-7. Error at the first start
+There was an error at the first execution of the script:
 
 ```{R error, eval=FALSE, size="tiny"}
 Error in loadNamespace(x) : there is no package called ‘car’
@@ -129,12 +136,14 @@ In grSoftVersion() :
   unable to load shared object '/usr/local/lib/R/modules//R_X11.so':
   libXt.so.6: cannot open shared object file: No such file or directory
 ```
-To fix this issue, "car" has to be installed
+
+To fix this issue, the package "car" has to be installed.
+
 ```{R car, eval=FALSE, size="tiny"}
 install.packages("car")
 ```
 
-8. Run reproducibility
+## 7. Execute workflow
 
 ```{R launch2, eval=FALSE, size="tiny"}
 source("AGILE2022.R")
@@ -284,18 +293,19 @@ knitr::include_graphics("agile16-fig1.png")
 knitr::include_graphics("agile16-fig2.png")
 ```
 
-With this script (AGILE2022.R) 0 figure out of 6 were reproduced. After discussion with the authors, it appears that users can reproduce all the figures (6/6) by uncommenting the following lines: 
+With the script `AGILE2022.R`, initially none of the 6 figures were reproduced.
+After discussion with the authors, it appears that users can reproduce all the figures (6/6) by uncommenting the following lines: 
 
-+ [line 49](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L49): figure 1. Histogram og the variables
-+ [line 66](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L66): figure 2. Distribution of Strava Counts
-+ [line 80](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L80): figure 3. Distribution of Variables: %Green spaces, PTAI, and Average Buidling Heights
++ [line 49](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L49): Figure 1. Histogram og the variables
++ [line 66](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L66): Figure 2. Distribution of Strava Counts
++ [line 80](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L80): Figure 3. Distribution of Variables: %Green spaces, PTAI, and Average Buidling Heights
 + [line 128 and 129](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L128): Figure 4. OLS residuals for the response variables. Morans’I for both residuals computed for 0.36 (weak clustering)
 + [line 195](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L195): Figure 5. Estimated Coefficients of Strava Cycling (2017) and the Environmental Variables
 + [line 252](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L252): Figure 6. Estimated Coefficients of Strava Cycling (2018) and the Environmental Variables
 
-9. Run render function on index.qmd
+## 8. Run render function on index.qmd
 
-5 more figures have been generated. They all correspond to the figures in the paper. Only the first figure of the paper (Histogram of the variables) is not reproducible with the script
+5 more figures have been generated with the notebook file `index.qmd`. They all correspond to the figures in the paper. Only the first figure of the paper (Histogram of the variables) is not reproducible with the script.
 
 ```{r screenshot3, echo=FALSE, out.width="50%", fig.align='center', fig.cap="Index.qmd: distribution of Strava Counts. Reproduction of Fig 2."}
 knitr::include_graphics("agile16-2-fig2.png")
@@ -304,7 +314,6 @@ knitr::include_graphics("agile16-2-fig2.png")
 ```{r screenshot4, echo=FALSE, out.width="50%", fig.align='center', fig.cap="Index.qmd: Distribution of Variables: percent Green spaces, PTAI, and Average Building Height. Reproduction of Fig 3."}
 knitr::include_graphics("agile16-2-fig3.png")
 ```
-
 
 ```{r screenshot6, echo=FALSE, out.width="50%", fig.align='center', fig.cap="Index.qmd: OLS residuals for the response variables. Morans’I for both residuals computed for 0.36 (weak clustering). Reproduction of Fig 4."}
 knitr::include_graphics("agile16-2-fig5.png")
@@ -319,10 +328,10 @@ knitr::include_graphics("agile16-2-fig7.png")
 ```
 
 # Comments to the authors
+
 - The README.md should be completed by:
   - ~~Instructions for package installation~~ changed by the authors
   - The package "car" is missing
-  - ~~[The link to the website generated by quarto and hosted by github](https://dataandcrowd.github.io/AGILE2022/index.html)~~ changed by the authors
-- The authors should add a section in the README.md explaining how to easily set up a R environment compatible with this code. Users could use a docker image built by the [rocket-project](https://www.rocker-project.org/) as used in this report.
+  - ~~[The link to the website generated by Quarto and hosted on GitHub is broken](https://dataandcrowd.github.io/AGILE2022/index.html)~~ changed by the authors
+- The authors should add a section in the `README.md` explaining how to easily set up a R environment compatible with this code. Users could use a Docker image built by the [Rocker Project](https://www.rocker-project.org/) as used in this report.
 - The authors should uncomment the lines to automatically save all the plots.
-

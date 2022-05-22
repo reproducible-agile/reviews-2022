@@ -1,5 +1,5 @@
 ---
-title: "Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment"
+title: "Reproducibility review of: Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment"
 author: "Rémy Decoupes \\orcid{0000-0003-0863-9581}"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -56,20 +56,27 @@ To cite the report use
 > Guoray Cai and Yimu Pan. Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment
 
 # Summary
-The code and data provided by the authors allow to partially reproduce the section 4.4 (i.e. Interactive Exploration of Data Imperfection for Model Tuning) of the paper. The model training (PointNet++) and the input data for the section 4.4 are not reproducible by the provided code but the authors added a note, in the github repository of their project, explaining how the data was generated. Concerning the section 4.4 reproduction, 3 figures are fully reproducible (figs 5, 6, 7), 2 partially (figs 4, 8) and 4 are not (figs 3, 9, 10, 11). For figure 4, it seems that the provided data are not complete (some classes have missing data). The component D (i.e. "Ground Truth") of figure 8 is also missing.
+
+The code and data provided by the authors allow to **partially reproduce** the computational work presented in the Section 4.4, _Interactive Exploration of Data Imperfection for Model Tuning_, of the paper. The model training (PointNet++) and the input data for Section 4.4 are not reproducible by the provided code but the authors added a note, in the GitHub repository of their project, explaining how the data was generated. Three figures in Section 4.4 are fully reproducible (5, 6, and 7), 2 partially (4 and 8) and 4 are not (3, 9, 10, and 11).
+<!--For Figure 4, it seems that the provided data are incomplete. The component D (i.e., "Ground Truth") of Figure 8 is also missing.-->
 
 \clearpage
 
 # Reproducibility reviewer notes
+
 ## Download data and code
-The code is accessible through github:
+
+The code is accessible through GitHub:
+
 ```{bash github,  eval=FALSE, size="tiny"}
 git clone https://github.com/gxc26/PointClouds.git
 cd PointClouds
 ```
-As the datafile is a large file, authors provide a link to download it. The [link could be retrieve from the github repository](https://github.com/gxc26/PointClouds/blob/main/Link%20to%20datafile%20download). Authors should ensure that this link is permanent, otherwise the reproducibility will no longer be assured.
+
+As the datafile is a large file, authors provide a link to download it. The [link could be retrieve from the github repository](https://github.com/gxc26/PointClouds/blob/main/Link%20to%20datafile%20download). Authors should ensure that this link is permanent, otherwise the reproducibility will no longer be assured. At the  time of writing it is <https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/gxc26_psu_edu/ESTstxY2j_1CiTOiTl8ajt8BAVQmlsNT4AhpDZOvORGkxA?e=miJZJL>.
 
 ## Prepare the reproducibility environment
+
 <!-- 1. Create a conda environment with the authors environment file:  -->
 
 <!-- ```{bash conda,  eval=FALSE, size="tiny"}  -->
@@ -92,7 +99,9 @@ As the datafile is a large file, authors provide a link to download it. The [lin
 
 <!-- I tried to remove the version for these 4 packages. See ["PtClouds_agile_review.yaml"](./PtClouds_agile_review.yaml) -->
 
-The github repository has an environment file provided. I tried to create a conda environment using this file but it failed.
+The GitHub repository includes an environment file: `PtClouds.yaml`.
+I tried to create a conda environment using this file but it failed.
+
 ```{bash conda,  eval=FALSE, size="tiny"}
 conda env create -f PtClouds.yaml --name agile-repro-24
 Collecting package metadata (repodata.json): done
@@ -205,7 +214,9 @@ ResolvePackageNotFound:
   - hdf5==1.10.4=hfa1e0ec_0
   - freetype==2.11.0=hd8bbffd_0
 ```
-After some exchanges with the authors, they sent us another environment file by email.
+
+After some exchanges with the authors, the authors sent another environment file by email.
+
 ```{bash conda2,  eval=FALSE, size="tiny"}
 conda env create -f Ptclouds1.yml --name agile-repro-24
 Collecting package metadata (repodata.json): done
@@ -457,7 +468,8 @@ done
 #
 #     $ conda deactivate
 ```
-After this successful installation, the authors update their github repository.
+
+After this successful installation, the authors update their GitHub repository with the functional environment specification.
 
 ```{bash condagithub,  eval=FALSE, size="tiny"}
 conda env create -f Ptclouds.yml --name agile-repro-24
@@ -499,49 +511,52 @@ done
 
 ```
 
-Then I activate the environment and start jupyter notebook.
+Then I activate the environment and starte Jupyter notebook.
+
 ```{bash condaactivate,  eval=FALSE, size="tiny"}
 conda activate agile-repro-24
 jupyter notebook
 ```
 
 ### Run the jupyter notebook
-All cells were executed successfully. The notebook generate 2 tabs of visualization.
-```{r tab1, echo=FALSE, out.width="50%", fig.align='center', fig.cap="visual-exploration-dashboard-pt2.ipynb: Tab1. Reproduction of figures 5, 6 and 7"}
+
+All cells were executed successfully. The notebook generates 2 tabs of visualizations.
+
+```{r tab1, echo=FALSE, out.width="50%", fig.align='center', fig.cap="visual-exploration-dashboard-pt2.ipynb: Tab1. Reproduction of Figures 5, 6 and 7"}
 knitr::include_graphics("agile2022_24_repro_fig1.png")
 ```
 
-```{r tab2, echo=FALSE, out.width="50%", fig.align='center', fig.cap="visual-exploration-dashboard-pt2.ipynb: Tab2. Partially reproduction of figure 4."}
+```{r tab2, echo=FALSE, out.width="50%", fig.align='center', fig.cap="visual-exploration-dashboard-pt2.ipynb: Tab2. Partially reproduction of Figure 4."}
 knitr::include_graphics("agile2022_24_repro_fig2.png")
 ```
 
-I notice differences between the figures from the paper and the figures generated by the code
+I notice differences between the figures from the paper and the figures generated by the code:
 
 - Figure 3 ("Stanford Large-Scale 3D Indoor Spaces Dataset (S3DIS)") is not generated by the code
 - Figure 4 ("Point-level accuracy and error rates on semantic labeling"): 
   - some class are empty (Sofa, Column, Board, Windows, beam).
   - proportion of classes are different (all)
-  It's maybe because there is a filter (from test_split.txt) on rooms. The file test_split.txt has 54 value whereas the paper used 272 rooms.
+  It's maybe because there is a filter (from `test_split.txt`) on rooms. The file `test_split.txt` has 54 value whereas the paper used 272 rooms.
 - Figure 5, 6, 7 are reproducible
 - Figure 8 (Interactive Dashboard for Exploratory Semantic Segmentation): Ground truth is missing (component D)
 - Figure 9, 10, 11 are not reproducible because they come from human annotation.
 
-
-
 # Comments to the authors
-- ~~Can not create conda environment using the env file (PtClouds.yaml) provided by the authors. I suggest to export without information about the build numbers (which are OS dependent).~~ The authors update their github repository with a correct env file. The installation works fine now. 
-- We suggest to upload the data file ([pickle file](https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/gxc26_psu_edu/ESTstxY2j_1CiTOiTl8ajt8BAVQmlsNT4AhpDZOvORGkxA?e=miJZJL)) into Zenodo. The link to the datafile have to be permanent otherwise the reproducibility may no longer be assured.
-- The training of PointNet++ (Deep learning model) is not reproducible by the provided code. However, after a discussion with the authors, they added a note to their github repository explaining how the pickle file was generated:
 
-```{bash ghnote,  eval=FALSE, size="tiny"}
-	Run the PointNet++ semantic segmentation algorithm exactly as was done in the original paper Qi et al. (2017) 
-	(see 	https://github.com/charlesq34/pointnet2/blob/master/README.md) on the 272 rooms in S3DIS data.   
-	Do this 13 times to collect performance data on different radius values 
-	r = [0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.3, 0.35, 0.4].  
-	The result would be 13 point level semantic labels for each 3D point that correspond to the 13 different radius setting.  
-	These 13 values, together with the 3D coordinates and semantic ground truthfor each point are stored in the PICKLE file.  
-	The PICKLE file also stores the room number of each 3D points. 
-```
+- ~~Can not create conda environment using the env file (PtClouds.yaml) provided by the authors. I suggest to export without information about the build numbers (which are OS dependent).~~ The authors update their GitHub repository with a correct env file. The installation works fine now. 
+- We suggest to upload the data file ([pickle file](https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/gxc26_psu_edu/ESTstxY2j_1CiTOiTl8ajt8BAVQmlsNT4AhpDZOvORGkxA?e=miJZJL)) into Zenodo. The link to the datafile have to be permanent otherwise the reproducibility may no longer be assured.
+- The training of PointNet++ (Deep learning model) is not reproducible by the provided code. However, after a discussion with the authors, they added a note to their GitHub repository explaining how the pickle file was generated:
+
+  ```{bash ghnote,  eval=FALSE, size="tiny"}
+  Run the PointNet++ semantic segmentation algorithm exactly as was done in the original paper Qi et al. (2017) 
+  (see 	https://github.com/charlesq34/pointnet2/blob/master/README.md) on the 272 rooms in S3DIS data.   
+  Do this 13 times to collect performance data on different radius values 
+  r = [0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.3, 0.35, 0.4].  
+  The result would be 13 point level semantic labels for each 3D point that correspond to the 13 different radius setting.  
+  These 13 values, together with the 3D coordinates and semantic ground truthfor each point are stored in the PICKLE file.  
+  The PICKLE file also stores the room number of each 3D points. 
+  ```
 
 - As the authors use PointNet++, they should use the citation mentioned in [https://github.com/charlesq34/pointnet2/blob/master/README.md](https://github.com/charlesq34/pointnet2/blob/master/README.md)
-- The authors github repository is missing a license.
+
+- The GitHub repository is missing a license.
