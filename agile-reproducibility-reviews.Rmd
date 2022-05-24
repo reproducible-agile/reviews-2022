@@ -872,9 +872,12 @@ if (params$private_info) {
 5. Send the report to the original authors of the paper and add the reproducibility chair in CC, see template below;
 7. Add a new component to the [OSF project for 2022 reproducibility reviews](https://osf.io/r5w79/)
     - Use the European storage location, "Frankfurt"
-    - Name the component `Reproducibility review of: <FULL PAPER TITLE>`
-    - Add all contributors to the reproduction to the project (and remove possibly automatically added _"parent project contributors"_ from the [list of bibliographic contributors](https://help.osf.io/article/243-understand-contributor-permissions) because that would generate an incorrect citation statement on your project)
-    - Add the to be expected DOI to your report: you can preprend `10.17605/OSF.IO/` to the identifier of your OSF project to get the DOI; stick to all upper case or all lower case for readability, but both work and resolve to the same project
+    - Name the component `Reproducibility review of: <FULL PAPER TITLE HERE>`
+    - Add all contributors to the project
+    - In the project configuration...
+        - disable the "Wiki", unless you add content to it
+        - set the category of repository to "Other"
+    - Add the to be expected DOI to your report and to the coordination spreadsheet
     - Keep the project **private** until the publication of the paper (we don't want to announce anything that is not our place to announce)
     - Wait for final paper citation from publisher and add it to the report
     - Upload the report and supplemental material created by you, if suitable also the original material (add `LICENSE.md` and licensing information in the OSF project description in that case)
