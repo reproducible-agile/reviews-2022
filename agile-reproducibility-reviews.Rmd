@@ -28,6 +28,7 @@ library("RColorBrewer")
 library("here")
 library("quanteda")
 library("googledrive")
+library("googlesheets4")
 library("kableExtra")
 library("httr")
 library("xml2")
@@ -583,8 +584,10 @@ The report should be based on a template from this repository in [`report-templa
 
 #### Overview and files
 
-Reproducibility reviewers have access to the submission and reviews through EasyChair.
-The following snippets helpt to create a shared Google Spreadsheet to manage the status of reproductions.
+Reproducibility reviewers (might not) have access to the submission and reviews through EasyChair.
+The following snippets help to create a shared Google Spreadsheet to manage the status of reproductions.
+
+The spreadsheet is privately shared at <https://docs.google.com/spreadsheets/d/16DuExJqtp_fI3FLlOWOVRZQXyOYU1W3FCm9dgLlfRqk/>.
 
 ```{r upload_settings}
 review_data_csv_file <- file.path(review_files_path, "review_data.csv")
@@ -855,6 +858,18 @@ if (params$private_info) {
                             path = submissions_and_reviews)
   })
 }
+```
+
+### Prepare CSV with titles and DOIs for publisher
+
+```{r csv_for_publisher}
+googlesheets4::range_read(
+  ss = "https://docs.google.com/spreadsheets/d/16DuExJqtp_fI3FLlOWOVRZQXyOYU1W3FCm9dgLlfRqk",
+  range =  "review_data!A:F"
+  ) %>%
+  select(`ID`, `Title`, `Report DOI`) %>%
+  filter(!is.na(`Report DOI`)) %>%
+  write.csv("AGILE-Reproducibility-Review_report-DOIs.csv", row.names = FALSE)
 ```
 
 `r if(!params$private_info) {"-->"}`
