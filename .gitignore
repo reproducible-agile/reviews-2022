@@ -32,3 +32,13 @@ README.html
 reports/022/origami/
 
 reports/022/experimental-evaluation-ble-beacon/
+
+reports/017/cvpr21_newt_pretrained_models/
+
+*.gz
+
+reports/017/per_species.zip
+
+reports/017/iNaturalist_Competition/
+
+reports/017/per_species/

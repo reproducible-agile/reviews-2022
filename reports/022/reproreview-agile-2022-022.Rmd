@@ -48,7 +48,7 @@ knitr::include_graphics(temp)
 
 This report is part of the reproducibility review at the AGILE conference.
 For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
-This document is published on OSF at https://osf.io/anv9r/.
+This document is published on OSF at https://osf.io/8b7mr/.
 To cite the report use
 
 > _TODO_
@@ -60,7 +60,7 @@ To cite the report use
 # Summary
 
 The article present an experimental evaluation of a positioning system.
-Naturally, the physical/practial experiments could not be reproduced as part of this check of the computational reproducibility.
+Naturally, the physical/practical experiments could not be reproduced as part of this check of the computational reproducibility.
 However, the one figure in the article that is based on the data from the experiment, as well as the software for running the experiment shown in screenshots in the paper could be reproduced by me.
 With respect to the computational aspects and data visualisation, the given paper is reproducible.
 
@@ -81,30 +81,33 @@ From there, the following steps renders the given Rmd document successfully:
 git clone https://github.com/reproducible-agile/experimental-evaluation-ble-beacon
 ```
 
-```{r reproduction}
+```{r reproduction, size="tiny"}
 rmarkdown::render("experimental-evaluation-ble-beacon/Qamaz-etal-2022.Rmd")
 ```
 
-```{r sessionInfo}
+```{r sessionInfo, size="scriptsize"}
 sessionInfo()
 ```
 
 The created document includes a figure that matches Figure 4 with the exception of plot margins and therefore the legend overlaps the graph.
+It is shown below.
 
-```{r}
-file.copy("experimental-evaluation-ble-beacon/Qamaz-etal-2022_files/figure-gfm/unnamed-chunk-4-1.png", "figure4.png", overwrite = TRUE)
+```{r fig4, size="tiny"}
+file.copy("experimental-evaluation-ble-beacon/Qamaz-etal-2022_files/figure-gfm/unnamed-chunk-4-1.png",
+          "figure4.png", overwrite = TRUE)
 knitr::include_graphics("figure4.png")
 ```
 
 The provided Binder link does work, but only after manually installing missing packages, because the given `install.r` file seems not to be picked up (cf. [pull request](https://github.com/YouQam/experimental-evaluation-ble-beacon/pull/1)).
 Then the created output is the same as in my own environment.
 
+\newpage
 
 ## Experiment game
 
 The given paper collects data with human participants based on a game call GeoGami, and the used version is available in a branch on GitHub at <https://github.com/origami-team/origami/tree/ibeacon_integration_v3>.
 Compared to the regular codebase (<https://github.com/origami-team/origami/compare/ibeacon_integration_v3>) the branch does indeed seem to include code for communicating with beacons and creating a game variant based on beacons.
-**Without access to the beacon hardware, it's not possible for me to fully evaluate this part of the research.**
+_Without access to the beacon hardware, it's not possible for me to fully evaluate this part of the research._
 However, I'll see if I can build and run the game software at least.
 
 The README includes documentation for building the app locally and for mobile operating systems.
@@ -140,9 +143,8 @@ Gives me the UI of the GeoGami game, including some settings for Beacons.
 knitr::include_graphics("geogami-screenshot-scan.jpg")
 ```
 
-
-## FIXME! Not sure what I can do now - FIXME!
-
+Without access to the required hardware, there is no point in evaluating the app further, or to test builds for mobile operating systems.
+The code and the UI though show that a system as described in the paper seems to have been actually built.
 
 # Comments to the authors
 
