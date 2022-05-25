@@ -48,14 +48,14 @@ knitr::include_graphics(temp)
 
 This report is part of the reproducibility review at the AGILE conference.
 For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
-This document is published on OSF at OSF LINK HERE.
+This document is published on OSF at https://osf.io/djfc2/.
 To cite the report use
 
-> Granell, C. (2022, May 10). Reproducilbility review of: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data,
+> Granell, C. (2022, May 10). Reproducilbility review of: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data. https://doi.org/10.17605/OSF.IO/DJFC2
 
 # Reviewed paper
 
-Zhao, P., Li, A., Pilesjö, P., and Mansourian, A.: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data,  AGILE GIScience Ser., 3
+> Zhao, P., Li, A., Pilesjö, P., and Mansourian, A.: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data,  AGILE GIScience Ser., 3
 
 # Summary
 
@@ -134,43 +134,28 @@ recall:
 0.8376835236541599
 ```
 
-
 The results obtained, the performance evaluation metrics per each model, are consistent with the values charted in Figure 5. I did not recreate Figure 5 because no code is provided, even though I could code a similar barchart as the one in Figure 5. Yet, the `RF.py` script was killed and did not end properly. The second task of the script, which is aimed to create a boxplot to represent the feature importance of RF model (I guess, Figure 6) failed. 
-
 # Comments to the authors
 
-The provided scripts only generate the required data (printed in the console) for Figure 5. *I recommend adding a script to generate the actual bar chart depicted in Figure 5*.
-
-Some scripts take some time. *I recommend adding estimated execution time to each script, as the ANN adn RF scripts took a long time to execute.*
-
-The README file of the github repo is minimal, limited to the abstract and a link to the dataset on a  Drive folder. *I recommend adding usage information to the README file to associate each script to the expected output in the paper, and to add a `requeriment.txt` file or similar to indicate the required packages and their versions to run the analysis.*
-
-
+- The provided scripts only generate the required data (printed in the console) for Figure 5. *I recommend adding a script to generate the actual bar chart depicted in Figure 5*.
+- Some scripts take some time. *I recommend adding estimated execution time to each script, as the ANN and RF scripts took a long time to execute.*
+- The README file of the github repo is minimal, limited to the abstract and a link to the dataset on a  Drive folder. *I recommend adding usage information to the README file to associate each script to the expected output in the paper, and to add a `requirement.txt` file or similar to indicate the required packages and their versions to run the analysis.*
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
-# create ZIP of reproduction files and upload to OSF
-library("zip")
 library("here")
-
-zipfile <- here::here("PATH/agile-reproreview-YEAR-NUMBER.zip")
-file.remove(zipfile)
-zip::zipr(zipfile,
-          here::here("2020-018/files to add to the zip, if any"))
-
 library("osfr") # See docs at https://docs.ropensci.org/osfr/
 # OSF_PAT is in .Renviron in parent directory
 # We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
 
 # retrieve project
-project <- osfr::osf_retrieve_node("OSF ID")
+project <- osfr::osf_retrieve_node("djfc2")
 
 # upload files
 osfr::osf_upload(x = project,
                  conflicts = "overwrite",
-                 path = c(list.files(here::here("PATH"),
-                                     pattern = "agile-reproreview-.*(pdf$|Rmd$|zip$)",
-                                     full.names = TRUE),
-                          "COPYRIGHT"
+                 path = c(list.files(here::here("003"),
+                                     pattern = ".*reproreview-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE)
                           )
                  )
 ```
