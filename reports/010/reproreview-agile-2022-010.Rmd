@@ -60,13 +60,10 @@ Cai, H., Xin, Y., Martin, H.,  and Raubal, M.: Optimizing Electric Vehicle Charg
 
 # Summary
 
-The provided workflow was **partially reproduced**. 
-
-Your paper does 
-
 The authors included a Data and Software Availability ("DASA") section, where a link to an anonymous github repo was provided. It contains a landing page with detailed instructions and an entry point (`main` script) to run the entire analysis. The authors also specified which scripts are involved in the different outputs of the paper (tables, figures, etc). The authors claimed that input data cannot be disclosed. After communicating with authors, they provided me a few synthetic input samples (CSV format) to run the probabilistic models and charging strategies for simulation and evaluation, therefore skipping the need to access and getting real data from a remote database, as coded in the original `main` scripts. Because only synthetic samples are provided, there are differences between the results of the reproduction and the ones in the original paper.
 
-The reproduction described in this report uses the Python code provided in a Github repo. Even though the reproduction exercise with synthetic data failed during the last step of the script, I can consider the paper was *partially reproducible*.
+The reproduction described in this report uses the Python code provided in a Github repo. Even though the reproduction exercise with synthetic data failed during the last step of the script, I can consider the paper was *partially reproducible* based on the synthetic data prepared by the authors. 
+
 
 \clearpage
 
@@ -167,7 +164,7 @@ data/inputs/soc_prediction:
 
 ```
 
-Execution of the `main.py` script. The outpot on teh consilo is aquite large, so I include here some part of the output, including the generated error at the end of the execution of the `main.py` script. 
+Execution of the `main.py` script. The output on the console is quite large, so I only copy below some parts of the output, including the generated error at the end of the execution of the `main.py` script. 
 
 ```{bash main, eval=FALSE, size="scriptsize"}
 # in ./agile2022-010
@@ -1214,6 +1211,8 @@ IndexError: index 0 is out of bounds for axis 0 with size 0
 
 
 ```
+
+The exception raised appears to be related to an error in the contained data in one of the synthetic data files.
 
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
