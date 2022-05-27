@@ -176,9 +176,9 @@ project <- osfr::osf_retrieve_node("8b7mr")
 # upload files
 osfr::osf_upload(x = project,
                  conflicts = "overwrite",
-                 path = c(list.files(here::here("005"),
+                 path = c(list.files(here::here("022"),
                                      pattern = "reproreview-agile-.*(pdf$|Rmd$|zip$)",
-                                     full.names = TRUE)
+                                     full.names = TRUE),
                           )
                  )
 ```
