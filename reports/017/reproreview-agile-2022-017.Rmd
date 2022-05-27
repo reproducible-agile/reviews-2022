@@ -60,7 +60,8 @@ To cite the report use
 # Summary
 
 The article presents a comparison of seven image-based species recognition models, which were benchmarked against a set of species.
-Selected model executions were successfully reproduced as part of this reproducibility review.
+Selected model executions were successfully reproduced as part of this reproducibility review, without any errors.
+The outputs were manually compared on a sample basis and match the result data shared privately by the authors; no summary statistics were recalculated.
 The authors provided the used data privately, but all code and good documentation is available online and properly deposited and cited using a data repository.
 Only two of the four online classification APIs were tested due to the requirement of registering accounts, therefore this reproduction is only partially complete.
 
@@ -393,6 +394,10 @@ This API was not tested for time constraints and the need for registration.
 ### NIA
 
 This API was not tested for time constraints and the need for registration.
+
+## Table 5
+
+The summary statistics for Table 5 were not calculated as scripts/documentation on how to do that was missing.
 
 # Comments to the authors
 
