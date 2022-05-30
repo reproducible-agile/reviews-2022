@@ -888,17 +888,20 @@ googlesheets4::range_read(
 7. Add a new component to the [OSF project for 2022 reproducibility reviews](https://osf.io/r5w79/)
     - Use the European storage location, "Frankfurt"
     - Name the component `Reproducibility review of: <FULL PAPER TITLE HERE>`
-    - Add all contributors to the project
-    - In the project configuration...
-        - disable the "Wiki", unless you add content to it
-        - set the category of repository to "Other"
-    - Add the to be expected DOI to your report and to the coordination spreadsheet
+    - Add link to the OSF project in the master spreadsheet
     - Keep the project **private** until the publication of the paper (we don't want to announce anything that is not our place to announce)
     - Wait for final paper citation from publisher and add it to the report
+7. In the OSF project for the reproducibility report
+    - Add all _contributors_ to the review to the project
+    - In the project _configuration_:
+        - disable the "Wiki", unless you add content to it
+        - set the category of repository to "Other"
+    - Add the to be expected DOI to your report and to the coordination spreadsheet: append the project ID of the OSF project in capitals to `10.17605/OSF.IO/` to guess the future DOI
+8. _After_ papers are published:
     - Upload the report and supplemental material created by you, if suitable also the original material (add `LICENSE.md` and licensing information in the OSF project description in that case)
-    - Publish the component and mint a DOI
     - Upload a PDF of your report and any useful supplemental files
-7. Add link to the OSF project in the master spreadsheet
+    - Publish the component
+    - Mint a DOI (double check if it is correct)
 
 ### Author contact templates
 
