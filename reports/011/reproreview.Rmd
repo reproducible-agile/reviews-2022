@@ -74,7 +74,7 @@ The implementation of the analysis is based on a PostgreSQL database with a Post
 - Jupyter Notebook 6.4.11
 - Python 3.9.12
 
-The pipeline of the workflow was not hard to reproduce. The authors took a couple of weeks to organize the materials properly and eventually responded with elaborate instructions that were easy to follow. The notebooks were structured in a sensible way that matches the way the results are presented in the paper and the reproduced figures and numbers were explicitly corresponding with the paper.  
+The pipeline of the workflow was not hard to reproduce. The authors took a couple of weeks to organize the materials properly and eventually responded with elaborate instructions that were easy to follow. The notebooks were structured in a sensible way that matches the way the results are presented in the paper and the reproduced figures and numbers were explicitly corresponding with the paper. A list of Python packages was not included in the materials. All the necessary Python packages were installed using Anaconda navigator, unless indicated otherwise by the instructions.
 
 ### Reproduced figures
 
