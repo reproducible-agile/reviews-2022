@@ -1,0 +1,131 @@
+---
+title: "Reproducibility review of: Exploratory Analysis and Feature Selection for the Prediction of Nitrogen Dioxide"
+author: "Eftychia Koukouraki \\orcid{0000-0003-0928-1139}"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: false
+papersize: a4
+header-includes:
+  - |
+    % https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex/445583 (works with pdflatex)
+    \usepackage{scalerel}
+    \usepackage{tikz}
+    \usetikzlibrary{svg.path}
+    \definecolor{orcidlogocol}{HTML}{A6CE39}
+    \tikzset{
+      orcidlogo/.pic={
+        \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                     svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z     M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                     svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+      }
+    }
+    \newcommand\orcid[1]{\href{https://orcid.org/#1}{\raisebox{0.15 em}{\mbox{\scalerel*{
+    \begin{tikzpicture}[yscale=-1, transform shape]
+    \pic{orcidlogo};
+    \end{tikzpicture}
+    }{|}}}}}
+    \definecolor{agileblue}{RGB}{0,77,155}
+urlcolor: agileblue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r logo, eval=TRUE, echo=FALSE, message=FALSE, fig.align='center', out.width='0.3\\linewidth', fig.pos='H'}
+temp <- tempfile(fileext = ".pdf")
+download.file(url = "https://reproducible-agile.github.io/public/images/reproducible-AGILE-logo-square.pdf", destfile = temp)
+knitr::include_graphics(temp)
+```
+
+This report is part of the reproducibility review at the AGILE conference.
+For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
+This document is published on OSF at [https://osf.io/wncsm/](https://osf.io/w7vph/).
+To cite the report use
+
+Koukouraki, E. (2022, June).  Reproducibility review of: Exploratory Analysis and Feature Selection for the Prediction of Nitrogen Dioxide.  [https://doi.org/10.17605/OSF.IO/WNCSM](https://doi.org/10.17605/OSF.IO/W7VPH)
+
+# Reviewed paper
+
+Iskandaryan, D., Di Sabatino, S., Ramos, F., and Trilles, S.: Exploratory Analysis and Feature Selection for the Prediction of Nitrogen Dioxide, AGILE GIScience Ser., 3, 6, [https://doi.org/10.5194/agile-giss-3-6-2022](https://doi.org/10.5194/agile-giss-3-6-2022)
+
+# Summary
+
+The paper evaluates the competence of selected features in the prediction of Nitrogen Dioxide with Machine Learning. For this reproduciblity review, the Figures and Tables of *Section 5 - Experiments and Results* were considered, while the Figures of *Section 3 - Exploratory Analysis* were not. The code of the corresponding analysis can be found in the following archived Github repository: [https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection](https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection). The data that is necessary to run the code can be found in the following Zenodo repository: [https://zenodo.org/record/6543074](https://zenodo.org/record/6543074). The reproduced results were in accordance with the ones reported in the paper, so the **reproduction** of the paper is considered **successful**.
+
+
+\clearpage
+
+# Reproducibility reviewer notes
+
+The code for the reproduction of the paper's analysis was provided as a Github repository in the *Data and Software Availability* Section of the paper and the necessary data to run the code was provided as a Zenodo repository in the README of the aforementioned Github repository. The link to the datasets is the following [https://zenodo.org/record/6543074](https://zenodo.org/record/6543074). After the reproducibility review, the Github repository was forked and archived under the official Reproducible AGILE Github organization. 
+
+The implementation of the analysis is handled mainly by 2 Jupyter notebooks, which were executed in the environment of Google Colaboratory ([https://colab.research.google.com/](https://colab.research.google.com/)). The data had to be either uploaded manually or externally mounted. The latter required the modification of the corresponding paths in the code. In order to reproduce all the reported results, we had to manipulate the code by commenting and uncommenting different chunks, something that is not ideal. Furthermore, previous experience with the Keras API was necessary in order to figure out how the manipulation should be properly handled. Instructions on how to use the notebooks were not provided with the README.
+
+In order to eliminate any uncertainty that is induced by training Machine Learning models with early stopping callback, the authors were encouraged to provide the models that they had already trained, as well as the training weights. Eventually, the authors provided both the trained models and the code for training new ones for the needs of the reproducibility review.
+
+### Reproduced figures
+
+The reproduced figures (Figure 13 and 14) deviate slightly from ones in the paper, but the differences were considered of minor importance, since they do not affect the outcome of this stage of the analysis. The reproduced figures were created using the following Jupyter notebook [https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection/blob/main/Mutual_Information.ipynb](https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection/blob/main/Mutual_Information.ipynb) and they are demonstrated below:
+
+```{r, echo=FALSE,out.width="50%",fig.cap="Corresponds to Figure 13 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics('./reproduced/Figure13.png')
+```
+
+```{r, echo=FALSE,out.width="50%",fig.cap="Corresponds to Figure 14 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics('./reproduced/Figure14.png')
+```
+
+### Reproduced tables
+
+The reproduced tables (Table 2, 3 and 4) were created using the following Jupyter notebook.  [https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection/blob/main/BiConvLSTM.ipynb](https://github.com/reproducible-agile/ExploratoryAnalysis_FeatureSelection/blob/main/BiConvLSTM.ipynb). The creation required to manipulate and rerun the code and then combine the results in a manual fashion. Below are showcased the different screenshots that were collected throughout this process:
+
+
+```{r, echo=FALSE,out.width="35%",fig.cap="Corresponds to Table 2 of the reproduced paper",fig.show='hold',fig.align='center', nCol = 2,}
+knitr::include_graphics(c(c('./reproduced/Table2_ScenarioI_AllFeatures.png','./reproduced/Table2_ScenarioI_MI.png'), c('./reproduced/Table2_ScenarioII_AllFeatures.png', './reproduced/Table2_ScenarioII_MI.png')))
+```
+
+```{r, echo=FALSE,out.width="50%",fig.cap="Corresponds to Table 3 of the reproduced paper",fig.show='hold',fig.align='center', nCol=1}
+knitr::include_graphics(c('./reproduced/Table3_K3.png','./reproduced/Table3_K4.png', './reproduced/Table3_K5.png', './reproduced/Table3_K6.png', './reproduced/Table3_K7.png', './reproduced/Table3_K8.png'))
+```
+
+```{r, echo=FALSE,out.width="50%",fig.cap="Corresponds to Table 4 of the reproduced paper",fig.show='hold',fig.align='center', nCol=1}
+knitr::include_graphics(c('./reproduced/Table4_K3.png','./reproduced/Table4_K4.png', './reproduced/Table4_K5.png', './reproduced/Table4_K6.png', './reproduced/Table4_K7.png', './reproduced/Table4_K8.png'))
+```
+
+
+```{r, echo=FALSE, eval=FALSE, results='hide'}
+# create ZIP of reproduction files and upload to OSF
+library("zip")
+library("here")
+
+zipfile <- here::here("PATH/agile-reproreview-YEAR-NUMBER.zip")
+file.remove(zipfile)
+zip::zipr(zipfile,
+          here::here("2020-018/files to add to the zip, if any"))
+
+library("osfr") # See docs at https://docs.ropensci.org/osfr/
+# OSF_PAT is in .Renviron in parent directory
+# We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
+
+# retrieve project
+project <- osfr::osf_retrieve_node("OSF ID")
+
+# upload files
+osfr::osf_upload(x = project,
+                 conflicts = "overwrite",
+                 path = c(list.files(here::here("PATH"),
+                                     pattern = "agile-reproreview-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE),
+                          "COPYRIGHT"
+                          )
+                 )
+```
