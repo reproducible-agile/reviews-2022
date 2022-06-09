@@ -1,5 +1,5 @@
 ---
-title: "Reproducibility review of: Traffic Regulation Recognition using Crowd-sensed GPS Data and Map Data: a Hybrid Approach"
+title: "Reproducibility review of: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach"
 author: "Eftychia Koukouraki \\orcid{0000-0003-0928-1139}"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -51,11 +51,11 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at [https://osf.io/wncsm/](https://osf.io/wncsm/).
 To cite the report use
 
-> FULL REPORT CITATION HERE
+Koukouraki, E. (2022, June).  Reproducibility review of: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach. [https://doi.org/10.17605/OSF.IO/WNCSM](https://doi.org/10.17605/OSF.IO/WNCSM)
 
 # Reviewed paper
 
-Stefania Zourlidou, Jens Golze and Monika Sester (2022). Traffic Regulation Recognition using Crowd-sensed GPS Data and Map Data: a Hybrid Approach.
+Zourlidou, S., Golze, J., and Sester, M.: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach, AGILE GIScience Ser., 3, 22, https://doi.org/10.5194/agile-giss-3-22-2022
 
 # Summary
 
