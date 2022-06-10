@@ -1,5 +1,5 @@
 ---
-title: "Reproducibility review of: Does the Built Environment Increase Active Travel?: Utilising Strava Bike Data and Geographically Weighted Models"
+title: "Reproducibility review of: The Impact of Built Environment on Bike Commuting: Utilising Strava Bike Data and Geographically Weighted Models"
 author: "Rémy Decoupes \\orcid{0000-0003-0863-9581}"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -51,9 +51,11 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at OSF **INSERT LINK HERE**.
 To cite the report use
 
+> _..._
+
 # Reviewed paper
 
-> Hyesop Shin, Ana Basiri and Costanza Cagnina. Does the Built Environment Increase Active Travel?: Utilising Strava Bike Data and Geographically Weighted Models
+> _Shin, H., Cagnina, C., and Basiri, A.: The Impact of Built Environment on Bike Commuting: Utilising Strava Bike Data and Geographically Weighted Models, AGILE GIScience Ser., 3, 15, <https://doi.org/10.5194/agile-giss-3-15-2022>_
 
 # Summary
 
