@@ -51,13 +51,15 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at OSF **INSERT LINK HERE**.
 To cite the report use
 
+> _TODO_
+
 # Reviewed paper
 
-> Guoray Cai and Yimu Pan. Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment
+> _Cai, G., and Pan Y.: Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment, AGILE GIScience Ser., 3, 2, <https://doi.org/10.5194/agile-giss-3-2-2022>_
 
 # Summary
 
-The code and data provided by the authors allow to **partially reproduce** the computational work presented in the Section 4.4, _Interactive Exploration of Data Imperfection for Model Tuning_, of the paper. The model training (PointNet++) and the input data for Section 4.4 are not reproducible by the provided code but the authors added a note, in the GitHub repository of their project, explaining how the data was generated. Three figures in Section 4.4 are fully reproducible (5, 6, and 7), 2 partially (4 and 8) and 4 are not (3, 9, 10, and 11).
+The code and data provided by the authors allow to **partially reproduce** the computational work presented in the Section 4.4, _Interactive Exploration of Data Imperfection for Model Tuning_, of the paper. The model training (PointNet++) and the input data for Section 4.4 are not reproducible with the provided code but the authors added a note, in the GitHub repository of their project, explaining how the data was generated. Three figures in Section 4.4 are fully reproducible (5, 6, and 7), 2 partially (4 and 8) and 4 are not (3, 9, 10, and 11).
 <!--For Figure 4, it seems that the provided data are incomplete. The component D (i.e., "Ground Truth") of Figure 8 is also missing.-->
 
 \clearpage

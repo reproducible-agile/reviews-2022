@@ -1,0 +1,35 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Relative Spatial Information Extraction and Tagging of Unstructured Text"
+  authors:
+    - name: Mehtab Alam Syed
+      ORCID: https://orcid.org/0000-0003-3696-0030
+    - name: Elena Arsevska
+      ORCID: https://orcid.org/0000-0002-6693-2316
+    - name: Mathieu Roche
+      ORCID: https://orcid.org/0000-0003-3272-8568
+    - name: Maguelonne Teisseire
+      ORCID: https://orcid.org/0000-0001-9313-6414
+  reference: https://doi.org/10.5194/agile-giss-3-16-2022
+
+codechecker:
+  - name: Jakub Krukar
+    ORCID: https://orcid.org/0000-0003-2615-8757
+
+report: https://doi.org/10.17605/osf.io/3g9s8
+summary: |
+    The main contribution of the paper are two web applications on the streamlit.io platform.
+    The paper includes the DASA section and links to live online instances of the applications, as well as to GitHub repositories with the code and data.  The repositories are well documented.
+    I was able to clone the repositories and run the code, reproducing examples demonstrated on figures in the paper.
+    One of the reproduced figures differed from the one presented in the paper. 
+    The tables demonstrating results of the evaluation of the app were partially reproducible but returned slightly different values.
+    The paper has been partially reproduced.
+repository: https://...
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-013

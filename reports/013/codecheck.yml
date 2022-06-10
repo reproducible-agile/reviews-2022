@@ -1,0 +1,33 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Spatial Disaggregation of Population Subgroups Leveraging Self-Trained Multi-Output Gradient Boosted Regression Trees"
+  authors:
+    - name: Marina Georgati
+      ORCID: https://orcid.org/0000-0001-7794-8308
+    - name: João Monteiro
+      ORCID: https://orcid.org/0000-0003-4491-3744
+    - name: Bruno Martins
+      ORCID: https://orcid.org/0000-0002-3856-2936
+    - name: Carsten Keßler 
+      ORCID: https://orcid.org/0000-0002-9724-820X
+  reference: ttps://doi.org/10.5194/agile-giss-3-5-2022
+
+codechecker:
+  - name: Frank O. Ostermann
+    ORCID: https://orcid.org/0000-0002-9317-8291
+
+report: https://doi.org/10.17605/osf.io/cdfah
+summary: |
+    The paper presents an extensive quantitative study that consists of numerous (pre-)processing steps involving multiple input data sets of different types (e.g., CSV, remotely sensed imagery, and geographic vector data).
+    The input data is not provided but sufficiently documented to be recreatable or retrievable from other sources. Unfortunately, despite great support from the corresponding author, the time constraints of this review, coupled with the need to organize the data and the complexity of the workflow, allowed only a partial reproduction of the processing pipeline: the initial dasymetric mapping to generate the first inputs of disaggregated population density, and one of the multiple analysis on that data for the city of Amsterdam.
+    However, a careful evaluation of the available code led this reviewer to the conclusion that with more time, a successful reproduction of the entire workflow
+is highly likely. In any case, there is sufficient information to replicate the study for a different geographic area or with different methods or parameters.
+repository: https://github.com/mgeorgati/spDisag
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-005

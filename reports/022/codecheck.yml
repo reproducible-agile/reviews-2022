@@ -1,0 +1,28 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Experimental evaluation of using BLE beacon for outdoor positioning in GPS-denied environment"
+  authors:
+    - name: Yousef Qamaz
+    - name: Angela Schwering
+    - name: Janina Bistron
+  reference: https://doi.org/10.5194/agile-giss-3-13-2022
+
+codechecker:
+  - name: Daniel Nüst
+    ORCID: 0000-0002-0024-5046
+
+report: https://doi.org/10.17605/osf.io/8b7mr
+summary: |
+    The article present an experimental evaluation of a positioning system.
+    Naturally, the physical/practical experiments could not be reproduced as part of this check of the computational reproducibility.
+    However, the one figure in the article that is based on the data from the experiment, as well as the software for running the experiment shown in screenshots in the paper could be reproduced by me.
+    With respect to the computational aspects and data visualisation, the given paper is reproducible.
+repository: https://github.com/YouQam/experimental-evaluation-ble-beacon
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-010

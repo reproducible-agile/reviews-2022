@@ -1,0 +1,38 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Geoparsing: Solved or Biased? An Evaluation of Geographic Biases in Geoparsing"
+  authors:
+    - name: Zilong Liu
+      ORCID: 	0000-0002-7699-3366
+    - name: Krzysztof Janowicz
+    - name: Ling Cai
+      ORCID: 0000-0001-7106-4907
+    - name: Rui Zhu
+      ORCID: 0000-0002-8910-9445
+    - name: Gengchen Mai
+      ORCID: 0000-0002-7818-7309
+    - name: Meilin Shi
+      ORCID: 0000-0001-6039-7810
+  reference: https://doi.org/10.5194/agile-giss-3-9-2022
+
+codechecker:
+  - name: Daniel Nüst
+    ORCID: 0000-0002-0024-5046
+  - name: Eleni Tomai
+    ORCID: 0000-0003-1162-7389
+
+report: https://doi.org/10.17605/OSF.IO/3DSMV
+summary: |
+    The article presents an evaluation of geoparsing performance using a number of different datasets and methods from various sources.
+    Though preprocessing steps and a core analysis step based on proprietary software could not be evaluated, one of two toponym resolution models could be executed successfully.
+    The provided notebooks for exploratory analysis, calculating statistical values, and geographic bias evaluation could be run and the outputs match the data and figures presented in the paper.
+    Therefore, this reproducibility report can confirm a partially successful reproduction of a complex pipeline, for which authors provide reasonable but improvable documentation and share all details (code, data) of their computational workflow.
+repository: https://github.com/zilongliu-geo/Geoparsing-Solved-Or-Biased
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-007

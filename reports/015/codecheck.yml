@@ -1,0 +1,35 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "A method to produce metadata describing and assessing the quality of spatial landmark datasets in mountain area"
+  authors:
+    - name: Marie-Dominique Van Damme
+      ORCID: https://orcid.org/0000-0002-0007-5972
+    - name: Ana-Maria Olteanu-Raimond
+  reference: https://doi.org/10.5194/agile-giss-3-17-2022
+
+codechecker:
+  - name: Philipp A. Friese
+    ORCID: https://orcid.org/0000-0002-3124-5364
+
+report: https://doi.org/10.17605/osf.io/6s2gp
+summary: |
+    The software of the paper under reproduction is publicly available on GitHub.
+    The data sets are publicly available in a zenodo project.
+    Out of the four Figures and four Tables, two Figures and two Tables are eligible for reproduction.
+    Both eligible Figures have been successfully reproduced.
+    Both eligible Tables have been partially reproduced. The reproduction of Table 3 and 4 was partial as the provided software scripts comprise reproduction of one out of the four data columns. The remaining columns are expected to be reproducible after adjusting the scripts with references to the remaining data sets.
+    The authors showed concern and dedication to improve reproducibility of their work.
+    Reproduction was partially successful.
+repository: 
+    - https://github.com/umrlastig/MultiCriteriaMatching
+    - https://github.com/ANRChoucas/QualityMetadataSpatialLandmarkDataset
+    - https://github.com/ANRChoucas/VisuValideMultiCriteriaMatching
+    - https://github.com/ANRChoucas/QualityMetadataSpatialLandmarkDataset
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-014

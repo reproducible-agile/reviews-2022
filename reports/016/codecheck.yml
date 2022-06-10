@@ -1,0 +1,26 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "The Impact of Built Environment on Bike Commuting: Utilising Strava Bike Data and Geographically Weighted Models"
+  authors:
+    - name: Hyesop Shin
+    - name: Costanza Cagnina
+    - name: Anahid Basiri
+      ORCID: 0000-0002-2399-1797
+  reference: https://doi.org/10.5194/agile-giss-3-15-2022
+
+codechecker:
+  - name: Rémy Decoupes
+    ORCID: 0000-0003-0863-9581
+
+report: https://doi.org/10.17605/osf.io/r6psq
+summary: |
+    The authors provide all the data and code in their GitHub repository. From a fresh install of R, the software environment is easily set up. The authors provide one R script and one computational notebook, which could be executed successfully to create all the paper's figures.
+repository: https://github.com/dataandcrowd/AGILE2022
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-012
