@@ -51,11 +51,11 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at https://osf.io/k78eb/.
 To cite the report use
 
-> _TODO_ https://doi.org/10.17605/OSF.IO/K78EB
+> Nüst, Daniel. 2022. Reproducibility Review of: Benchmarking Invasive Alien Species Image Recognition Models for a Citizen Science Based Spatial Distribution Monitoring. OSF. <https://doi.org/10.17605/OSF.IO/K78EB>
 
 # Reviewed paper
 
-> _TODO_
+> _Niers, T., Stenkamp, J., Jakuschona, N. P., Bartoschek, T., and Schade, S.: Benchmarking Invasive Alien Species Image Recognition Models for a Citizen Science Based Spatial Distribution Monitoring, AGILE GIScience Ser., 3, 10, <https://doi.org/10.5194/agile-giss-3-10-2022>_
 
 # Summary
 
@@ -110,7 +110,9 @@ python inference.py
 ```
 
 ```{txt, size="scriptsize"}
-['callosciurus_erythraeus_obs_02.png', 'lysichiton_americanus_obs_01.png', 'sciurus_carolinensis_obs_03.jpg', 'gunnera_tinctoria_gold_03.jpg', 'oxyura_jamaicensis_obs_01.jpg', 'gunnera_tinctoria_gold_02.jpg', 'threskiornis_aethiopicus_gold_02.jpg', 'gunnera_tinctoria_obs_02.png', 
+['callosciurus_erythraeus_obs_02.png', 'lysichiton_americanus_obs_01.png', 'sciurus_carolinensis_obs_03.jpg',
+ 'gunnera_tinctoria_gold_03.jpg', 'oxyura_jamaicensis_obs_01.jpg', 'gunnera_tinctoria_gold_02.jpg',
+ 'threskiornis_aethiopicus_gold_02.jpg', 'gunnera_tinctoria_obs_02.png', 
  # abbreviated [...]
 , 'persicaria_perfoliata_gold_03.jpg', 'sciurus_carolinensis_gold_03.jpg']
 this file is processed
@@ -265,7 +267,8 @@ Then I follow the instructions in the little form provided when running the last
 
 Inputs: 
 
-- Directory with test images: `[.]/reviews-2022/reports/017/images_per_model/plantID/candidates/` <!-- /home/daniel/git/reproducible-agile/reviews-2022/reports/017/images_per_model/plantID/candidates/
+- Directory with test images:
+  `[.]/reviews-2022/reports/017/images_per_model/plantID/candidates/` <!-- /home/daniel/git/reproducible-agile/reviews-2022/reports/017/images_per_model/plantID/candidates/
  -->
 - Filename of result CSV: `plant.id-candidates.csv`
 - API: `plantID`
@@ -411,10 +414,7 @@ The summary statistics for Table 5 were not calculated as scripts/documentation 
 - Have a script for the calculation and aggregation of the statistics (_Table 5_), and publicly share your `Public_Models_Metadata` spreadsheet, ideally as a plain text file (CSV format); what could help with that: use the same structure for all output files.
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
-# create ZIP of reproduction files and upload to OSF
-library("zip")
 library("here")
-
 library("osfr") # See docs at https://docs.ropensci.org/osfr/
 # OSF_PAT is in .Renviron in parent directory
 # We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
@@ -431,7 +431,8 @@ osfr::osf_upload(x = project,
                           here::here("017", "iNaturalist_Competition", "LICENSE.md"),
                           here::here("017", "iNaturalist_Competition", "inference.py"),
                           here::here("017", "iNaturalist_Competition", "Output.txt"),
-                          here::here("017", "MicrosoftSpeciesClassification", "classify_images.py")
+                          here::here("017", "MicrosoftSpeciesClassification", "classify_images.py"),
+                          here::here("017", "codecheck.yml")
                           )
                  )
 ```
