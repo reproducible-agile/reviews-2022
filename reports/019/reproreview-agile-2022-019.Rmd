@@ -51,11 +51,11 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at https://osf.io/3dsmv/.
 To cite the report use
 
-> _TODO_ https://doi.org/10.17605/OSF.IO/3DSMV
+> Nüst, Daniel, and Eleni Tomai. 2022. Reproducibility Review of: Geoparsing: Solved or Biased? An Evaluation of Geographic Biases in Geoparsing. OSF. <https://doi.org/10.17605/OSF.IO/3DSMV>
 
 # Reviewed paper
 
-> _TODO_
+> _Liu, Z., Janowicz, K., Cai, L., Zhu, R., Mai, G., and Shi, M.: Geoparsing: Solved or Biased? An Evaluation of Geographic Biases in Geoparsing, AGILE GIScience Ser., 3, 9, <https://doi.org/10.5194/agile-giss-3-9-2022>_
 
 # Summary
 
@@ -436,10 +436,7 @@ Changed code and notebooks are in this commit: <https://github.com/reproducible-
 - You rely on distributed data sources, which are published under open licenses though. Consider having a script to download all of these files, or just saving a copy into your own repository, and documenting the different licenses clearly - it makes other people's lives a lot easier.
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
-# create ZIP of reproduction files and upload to OSF
-library("zip")
 library("here")
-
 library("osfr") # See docs at https://docs.ropensci.org/osfr/
 # OSF_PAT is in .Renviron in parent directory
 # We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
@@ -456,7 +453,8 @@ osfr::osf_upload(x = project,
                           list.files(here::here("019"),
                                      pattern = "figure.*",
                                      full.names = TRUE),
-                          here::here("019", "Geoparsing-Solved-Or-Biased/geoparsed-results-reproduced/geocorpora_geotagged_results_spaCy.csv")
+                          here::here("019", "Geoparsing-Solved-Or-Biased/geoparsed-results-reproduced/geocorpora_geotagged_results_spaCy.csv"),
+                          here::here("019", "codecheck.yml")
                           )
                  )
 ```
