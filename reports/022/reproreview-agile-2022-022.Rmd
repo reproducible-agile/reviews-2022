@@ -1,5 +1,5 @@
 ---
-title: "Reproducibility review of: Automated Extraction of Labels from Large-Scale Historical Maps"
+title: "Reproducibility review of: Experimental evaluation of using BLE beacon for outdoor positioning in GPS-denied environment"
 author: "Daniel Nüst \\orcid{0000-0002-0024-5046}"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -51,11 +51,11 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at https://osf.io/8b7mr/.
 To cite the report use
 
-> _TODO_
+> Nüst, Daniel. 2022. “Reproducibility Review of: Experimental Evaluation of Using BLE Beacon for Outdoor Positioning in GPS-Denied Environment.” OSF. <https://doi.org/10.17605/osf.io/8b7mr>
 
 # Reviewed paper
 
-> _TODO_
+> _Qamaz, Y., Schwering, A., and Bistron, J.: Experimental evaluation of using BLE beacon for outdoor positioning in GPS-denied environment, AGILE GIScience Ser., 3, 13, <https://doi.org/10.5194/agile-giss-3-13-2022>_
 
 # Summary
 
@@ -157,15 +157,7 @@ The code and the UI though show that a system as described in the paper seems to
 - Take advantage of the fact that you have an OSF repo and add additional information there, e.g., a screencast/video of the app or more screenshots than you could fit into the paper.
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
-# create ZIP of reproduction files and upload to OSF
-library("zip")
 library("here")
-
-#zipfile <- here::here("022/reproreview-agile-2022-022.zip")
-#file.remove(zipfile)
-#zip::zipr(zipfile = zipfile,
-#          files = c(here::here("005/Dockerfile")))
-
 library("osfr") # See docs at https://docs.ropensci.org/osfr/
 # OSF_PAT is in .Renviron in parent directory
 # We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
@@ -179,6 +171,9 @@ osfr::osf_upload(x = project,
                  path = c(list.files(here::here("022"),
                                      pattern = "reproreview-agile-.*(pdf$|Rmd$|zip$)",
                                      full.names = TRUE),
+                          here::here("022", "figure4.png"),
+                          here::here("022", "geogami-screenshot-scan.jpg"),
+                          here::here("022", "codecheck.yml")
                           )
                  )
 ```
