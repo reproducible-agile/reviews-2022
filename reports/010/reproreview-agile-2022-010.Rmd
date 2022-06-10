@@ -51,24 +51,23 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at https://osf.io/jdtn3/.
 To cite the report use
 
-> Granell, C. (2022, May 13). Reproducilbility review of: Optimizing Electric Vehicle Charging Schedules Based on
-Probabilistic Forecast of Individual Mobility. https://doi.org/10.17605/OSF.IO/JDTN3
+> Granell, C. (2022, May 13). Reproducilbility review of: Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility. <https://doi.org/10.17605/OSF.IO/JDTN3>
 
 # Reviewed paper
 
-> Cai, H., Xin, Y., Martin, H.,  and Raubal, M.: Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility, AGILE GIScience Ser., 3
+> _Cai, H., Xin, Y., Martin, H., and Raubal, M.: Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility, AGILE GIScience Ser., 3, 3, <https://doi.org/10.5194/agile-giss-3-3-2022>_
 
 # Summary
 
-The authors included a Data and Software Availability ("DASA") section, where a link to an anonymous github repo was provided. It contains a landing page with detailed instructions and an entry point (`main` script) to run the entire analysis. The authors also specified which scripts are involved in the different outputs of the paper (tables, figures, etc). The authors claimed that input data cannot be disclosed. After communicating with authors, they provided me a few synthetic input samples (CSV format) to run the probabilistic models and charging strategies for simulation and evaluation, therefore skipping the need to access and getting real data from a remote database, as coded in the original `main` scripts. Because only synthetic samples are provided, there are differences between the results of the reproduction and the ones in the original paper.
+The authors included a Data and Software Availability ("DASA") section, where a link to an anonymous GitHub repo was provided. It contains a landing page with detailed instructions and an entry point (`main` script) to run the entire analysis. The authors also specified which scripts are involved in the different outputs of the paper (tables, figures, etc). The authors claimed that input data cannot be disclosed. After communicating with authors, they provided me a few synthetic input samples (CSV format) to run the probabilistic models and charging strategies for simulation and evaluation, therefore skipping the need to access and getting real data from a remote database, as coded in the original `main` scripts. Because only synthetic samples are provided, there are differences between the results of the reproduction and the ones in the original paper.
 
-The reproduction described in this report uses the Python code provided in a Github repo. Even though the reproduction exercise with synthetic data failed during the last step of the script, I can consider the paper was *partially reproducible* based on the synthetic data prepared by the authors. 
+The reproduction described in this report uses the Python code provided in a GitHub repo. Even though the reproduction exercise with synthetic data failed during the last step of the script, I can consider the paper was *partially reproducible* based on the synthetic data prepared by the authors. 
 
 \clearpage
 
 # Reproducibility reviewer notes
 
-The original paper submission did not provide a link to the input data. All scripts were provided on an anonymised Github repo <https://anonymous.4open.science/r/agile22_evprediction-2F28/README.md>. I got synthetic data via email by authors. Given a project folder, all scripts are included in the  `<project-folder>/code` folder and synthetic data in the `<project-folder/data` folder. The authors updated the scripts on the anonymised Github repo (addition of comments, basically) to facilitate the reproduction check. In particular, I commented the code in `main.py` that refers to get real data from a remote database to use instead the synthetics data, and adjusted some file paths. Next, I followed the steps below.
+The original paper submission did not provide a link to the input data. All scripts were provided on an anonymised GitHub repo <https://anonymous.4open.science/r/agile22_evprediction-2F28/README.md>. I got synthetic data via email by authors. Given a project folder, all scripts are included in the  `<project-folder>/code` folder and synthetic data in the `<project-folder/data` folder. The authors updated the scripts on the anonymised GitHub repo (addition of comments, basically) to facilitate the reproduction check. In particular, I commented the code in `main.py` that refers to get real data from a remote database to use instead the synthetics data, and adjusted some file paths. Next, I followed the steps below.
 
 ```{bash init, eval=FALSE, size="scriptsize"}
 cgranell@DESKTOP-1PKOUTF:~/code/$ mkdir agile2022-010
@@ -1214,15 +1213,7 @@ IndexError: index 0 is out of bounds for axis 0 with size 0
 The exception raised appears to be related to an error in the contained data in one of the synthetic data files.
 
 ```{r, echo=FALSE, eval=FALSE, results='hide'}
-# create ZIP of reproduction files and upload to OSF
-library("zip")
 library("here")
-
-zipfile <- here::here("PATH/agile-reproreview-YEAR-NUMBER.zip")
-file.remove(zipfile)
-zip::zipr(zipfile,
-          here::here("2020-018/files to add to the zip, if any"))
-
 library("osfr") # See docs at https://docs.ropensci.org/osfr/
 # OSF_PAT is in .Renviron in parent directory
 # We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
@@ -1235,7 +1226,8 @@ osfr::osf_upload(x = project,
                  conflicts = "overwrite",
                  path = c(list.files(here::here("010"),
                                      pattern = ".*reproreview-.*(pdf$|Rmd$|zip$)",
-                                     full.names = TRUE)
+                                     full.names = TRUE),
+                          here::here("010", "codecheck.yml")
                           )
                  )
 ```
