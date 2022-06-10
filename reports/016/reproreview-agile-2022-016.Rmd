@@ -48,10 +48,10 @@ knitr::include_graphics(temp)
 
 This report is part of the reproducibility review at the AGILE conference.
 For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
-This document is published on OSF at OSF **INSERT LINK HERE**.
+This document is published on OSF at OSF https://doi.org/10.17605/OSF.IO/R6PSQ.
 To cite the report use
 
-> _..._
+> Decoupes, R. (2022, May 13). Reproducibility review of: The Impact of Built Environment on Bike Commuting: Utilising Strava Bike Data and Geographically Weighted Models. https://doi.org/10.17605/OSF.IO/R6PSQ
 
 # Reviewed paper
 
@@ -298,7 +298,7 @@ knitr::include_graphics("agile16-fig2.png")
 With the script `AGILE2022.R`, initially none of the 6 figures were reproduced.
 After discussion with the authors, it appears that users can reproduce all the figures (6/6) by uncommenting the following lines: 
 
-+ [line 49](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L49): Figure 1. Histogram og the variables
++ [line 49](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L49): Figure 1. Histogram of the variables
 + [line 66](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L66): Figure 2. Distribution of Strava Counts
 + [line 80](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L80): Figure 3. Distribution of Variables: %Green spaces, PTAI, and Average Buidling Heights
 + [line 128 and 129](https://github.com/reproducible-agile/AGILE2022-16/blob/main/AGILE2022.R#L128): Figure 4. OLS residuals for the response variables. Morans’I for both residuals computed for 0.36 (weak clustering)

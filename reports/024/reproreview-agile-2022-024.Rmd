@@ -48,10 +48,10 @@ knitr::include_graphics(temp)
 
 This report is part of the reproducibility review at the AGILE conference.
 For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
-This document is published on OSF at OSF **INSERT LINK HERE**.
+This document is published on OSF at https://doi.org/10.17605/OSF.IO/Z7P8K.
 To cite the report use
 
-> _TODO_
+> Decoupes, R. (2022, May 25). Reproducibility review of: Understanding the Imperfection of 3D point Cloud and Semantic Segmentation algorithms for 3D Models of Indoor Environment. https://doi.org/10.17605/OSF.IO/Z7P8K 
 
 # Reviewed paper
 
@@ -559,6 +559,6 @@ I notice differences between the figures from the paper and the figures generate
   The PICKLE file also stores the room number of each 3D points. 
   ```
 
-- As the authors use PointNet++, they should use the citation mentioned in [https://github.com/charlesq34/pointnet2/blob/master/README.md](https://github.com/charlesq34/pointnet2/blob/master/README.md)
+- ~~As the authors use PointNet++, they should use the citation mentioned in [https://github.com/charlesq34/pointnet2/blob/master/README.md](https://github.com/charlesq34/pointnet2/blob/master/README.md)~~ The authors added it.
 
 - The GitHub repository is missing a license.
