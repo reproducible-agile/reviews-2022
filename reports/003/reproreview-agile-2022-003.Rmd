@@ -1,5 +1,5 @@
 ---
-title: "Reproducibility review of: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data"
+title: "Reproducibility review of: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data"
 author: "Carlos Granell \\orcid{0000-0003-1004-9695}"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -51,15 +51,15 @@ For more information see [https://reproducible-agile.github.io/](https://reprodu
 This document is published on OSF at https://osf.io/djfc2/.
 To cite the report use
 
-> Granell, C. (2022, May 10). Reproducilbility review of: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data. https://doi.org/10.17605/OSF.IO/DJFC2
+> _Granell, C. (2022, May 10). Reproducilbility review of: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data. <https://doi.org/10.17605/OSF.IO/DJFC2>_
 
 # Reviewed paper
 
-> Zhao, P., Li, A., Pilesjö, P., and Mansourian, A.: A machine learning based approach on predicting usage efficiency of shared e-scooters using vehicle availability data,  AGILE GIScience Ser., 3
+> _Zhao, P., Li, A., Pilesjö, P., and Mansourian, A.: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data, AGILE GIScience Ser., 3, 20, <https://doi.org/10.5194/agile-giss-3-20-2022>_
 
 # Summary
 
-The provided workflow was **partially reproduced**. The authors provided a detailed description of the data sets in a Data and Software Availability section. Access to a processed data set of the e-scooter sharing vehicle data Service in Stockholm, Sweden, is provided along with Python scripts to run three machine learning methods: Logistic Regression (LR), Artificial Neural Network: Multilayer Perceptron (MLP), and Random Forest (RF). The implementation of these ML methods is based on the python library `Scikit-learn`. 
+The provided workflow was **partially reproduced**. The authors provided a detailed description of the data sets in a Data and Software Availability section. Access to a processed data set of the e-scooter sharing vehicle data Service in Stockholm, Sweden, is provided along with Python scripts to run three machine learning methods: Logistic Regression (LR), Artificial Neural Network: Multilayer Perceptron (MLP), and Random Forest (RF). The implementation of these ML methods is based on the Python library `Scikit-learn`. 
 
 The reproduction described in this report uses the Python code provided in a Github repo. The results reported here refer to Figure 5, which is a bar chart comparing the performance evaluation metrics (accuracy, F1, precision and recall) of the three ML methods. Nevertheless, no code is provided to visually recreate the figure, but the scripts produce the required data to create that figure. For the rest of figures and tables, no code is provided.
 
@@ -134,7 +134,10 @@ recall:
 0.8376835236541599
 ```
 
-The results obtained, the performance evaluation metrics per each model, are consistent with the values charted in Figure 5. I did not recreate Figure 5 because no code is provided, even though I could code a similar barchart as the one in Figure 5. Yet, the `RF.py` script was killed and did not end properly. The second task of the script, which is aimed to create a boxplot to represent the feature importance of RF model (I guess, Figure 6) failed. 
+The results obtained, the performance evaluation metrics per each model, are consistent with the values charted in Figure 5. I did not recreate Figure 5 because no code is provided, even though I could code a similar barchart as the one in Figure 5. Yet, the `RF.py` script was killed and did not end properly. The second task of the script, which is aimed to create a boxplot to represent the feature importance of RF model (I guess, Figure 6) failed.
+
+\newpage
+
 # Comments to the authors
 
 - The provided scripts only generate the required data (printed in the console) for Figure 5. *I recommend adding a script to generate the actual bar chart depicted in Figure 5*.
@@ -155,7 +158,8 @@ osfr::osf_upload(x = project,
                  conflicts = "overwrite",
                  path = c(list.files(here::here("003"),
                                      pattern = ".*reproreview-.*(pdf$|Rmd$|zip$)",
-                                     full.names = TRUE)
+                                     full.names = TRUE),
+                          here::here("003", "codecheck.yml")
                           )
                  )
 ```
