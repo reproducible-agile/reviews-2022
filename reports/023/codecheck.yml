@@ -1,0 +1,35 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Understanding COVID-19 Effects on Mobility: A Community-Engaged Approach"
+  authors:
+    - name: Arun Sharma
+    - name: Majid Farhadloo
+    - name: Yan Li
+    - name: Jayant Gupta
+      ORCID: https://orcid.org/0000-0001-7028-9928
+    - name: Aditya Kulkarni
+      ORCID: https://orcid.org/0000-0001-8981-6417
+    - name: Shashi Shekhar
+  reference: https://doi.org/10.5194/agile-giss-3-14-2022
+
+codechecker:
+  - name: Philipp A. Friese
+    ORCID: https://orcid.org/0000-0002-3124-5364
+
+report: https://doi.org/10.17605/osf.io/kf8sr
+summary: |
+    The software of the paper under reproduction is publicly available on GitHub.
+    The majority of data sets are publicly available in a Google Drive folder.
+    One data set is not available due to privacy policy concerns.
+    Out of the 17 Figures in the paper, 10 are eligible for reproduction.
+    Out of the 10 eligible Figures, 8 Figures where successfully reproduced, one Figure was partially reproduced and one Figure was not reproducible.
+    Reproduction was partially successful.
+repository: https://github.com/arunshar/COVID-19
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-011

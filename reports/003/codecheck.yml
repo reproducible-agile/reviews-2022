@@ -1,0 +1,30 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data"
+  authors:
+    - name: Pengxiang Zhao
+    - name: Aoyong Li
+    - name: Petter Pilesjö
+    - name: Ali Mansourian
+  reference: https://doi.org/10.5194/agile-giss-3-20-2022
+
+codechecker:
+  - name: Carlos Granell
+    ORCID: 0000-0003-1004-9695
+
+report: https://doi.org/10.17605/OSF.IO/DJFC2
+summary: |
+    The provided workflow was partially reproduced.
+    Access to a processed data set of the e-scooter sharing vehicle data Service in Stockholm, Sweden, is provided along with Python scripts to run three machine learning methods based on the Python library Scikit-learn.
+    The results reported here refer to Figure 5, which is a bar chart comparing the performance evaluation metrics (accuracy, F1, precision and recall) of the three ML methods.
+    Nevertheless, no code is provided to visually recreate the figure, but the scripts produce the required data to create that figure. 
+    For the rest of figures and tables, no code is provided.
+repository: https://github.com/micromobility-research/usage_efficiency_prediction
+check_time: "2021-07-09 12:00:00"
+certificate: 2022-016

@@ -172,7 +172,7 @@ pre code {
 
 <h1 class="title toc-ignore">Reproducibility Review AGILE 2022</h1>
 <h4 class="author">Daniel Nüst</h4>
-<h4 class="date">25 April, 2022</h4>
+<h4 class="date">07 June, 2022</h4>
 
 </div>
 
@@ -234,9 +234,12 @@ submissions system. The full submission information is not included in
 the public rendering of this report. Make sure that the shown columns in
 the submission table include the colums required in the code below.</p>
 <pre><code>## Warning: manually adding submission type, table does not have it this year</code></pre>
-<pre><code>## Warning message:
-## In stri_detect_regex(string, pattern, negate = negate,  ... :
-##   longer object length is not a multiple of shorter object length 
+<pre><code>## Warning messages:
+## 1: In .recacheSubclasses(def@className, def, env) :
+##   undefined subclass &quot;packedMatrix&quot; of class &quot;replValueSp&quot;; definition not updated 
+## removing submissions 1 and 2, they are tests this year
+## 2: In .recacheSubclasses(def@className, def, env) :
+##   undefined subclass &quot;packedMatrix&quot; of class &quot;mMatrix&quot;; definition not updated 
 ## removing submissions 1 and 2, they are tests this year</code></pre>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -263,7 +266,7 @@ Full-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-53
+54
 </td>
 </tr>
 </tbody>
@@ -273,8 +276,7 @@ Short-paper submission
 <h3>Load texts</h3>
 <p>The paper PDFs are downloaded from EasyChair directly using the links
 provided in the submission overview table.</p>
-<pre><code>## No paper URL for  31 
-## No paper URL for  37</code></pre>
+<pre><code>## No paper URL for  37</code></pre>
 <p>The text is extracted from PDFs and it is processed to create a <a
 href="https://www.jstatsoft.org/article/view/v059i10">tidy</a> data
 structure without <a
@@ -312,17 +314,15 @@ as <code>figure</code>.</p>
 ## Reading  /home/rstudio/submissions/031.pdf 
 ## Reading  /home/rstudio/submissions/032.pdf 
 ## Reading  /home/rstudio/submissions/033.pdf 
-## Reading  NA</code></pre>
-<pre><code>## Warning: No text available for paper 034 Assessing the Influences of Band Selection and Pretrained Weights
-## on Semantic-Segmentation-Based Refugee Dwelling Extraction from Satellite Imagery</code></pre>
-<pre><code>## Reading  /home/rstudio/submissions/035.pdf 
+## Reading  /home/rstudio/submissions/034.pdf 
+## Reading  /home/rstudio/submissions/035.pdf 
 ## Reading  /home/rstudio/submissions/036.pdf 
 ## Reading  /home/rstudio/submissions/037.pdf 
 ## Reading  /home/rstudio/submissions/038.pdf 
 ## Reading  /home/rstudio/submissions/039.pdf 
 ## Reading  NA</code></pre>
-<pre><code>## Warning: No text available for paper 040 High frequency land cover classification method for supporting
-## global monitoring</code></pre>
+<pre><code>## Warning: No text available for paper 040 High frequency land cover classification method for supporting global
+## monitoring</code></pre>
 <pre><code>## Reading  /home/rstudio/submissions/041.pdf 
 ## Reading  /home/rstudio/submissions/043.pdf 
 ## Reading  /home/rstudio/submissions/044.pdf 
@@ -363,7 +363,8 @@ as <code>figure</code>.</p>
 ## Reading  /home/rstudio/submissions/078.pdf 
 ## Reading  /home/rstudio/submissions/079.pdf 
 ## Reading  /home/rstudio/submissions/080.pdf 
-## Reading  /home/rstudio/submissions/081.pdf</code></pre>
+## Reading  /home/rstudio/submissions/081.pdf 
+## Reading  /home/rstudio/submissions/082.pdf</code></pre>
 <pre><code>## Warning: Outer names are only allowed for unnamed scalar atomic inputs</code></pre>
 <p>About 50 % of the words are considered stop words.</p>
 <p>The following table shows how many words and non-stop words each
@@ -393,10 +394,10 @@ non-stop words
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6714
+6776
 </td>
 <td style="text-align:right;">
-3487
+3530
 </td>
 </tr>
 <tr>
@@ -404,10 +405,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-4985
+5312
 </td>
 <td style="text-align:right;">
-2232
+2423
 </td>
 </tr>
 <tr>
@@ -426,10 +427,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6100
+6613
 </td>
 <td style="text-align:right;">
-2747
+2957
 </td>
 </tr>
 <tr>
@@ -437,7 +438,7 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-9356
+9355
 </td>
 <td style="text-align:right;">
 4422
@@ -470,10 +471,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-9272
+9241
 </td>
 <td style="text-align:right;">
-4991
+4976
 </td>
 </tr>
 <tr>
@@ -481,10 +482,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-9967
+10231
 </td>
 <td style="text-align:right;">
-4723
+4892
 </td>
 </tr>
 <tr>
@@ -492,10 +493,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6439
+6548
 </td>
 <td style="text-align:right;">
-3102
+3186
 </td>
 </tr>
 <tr>
@@ -503,10 +504,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-8125
+8771
 </td>
 <td style="text-align:right;">
-3905
+4272
 </td>
 </tr>
 <tr>
@@ -514,10 +515,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-5784
+5911
 </td>
 <td style="text-align:right;">
-3125
+3211
 </td>
 </tr>
 <tr>
@@ -525,10 +526,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6510
+7733
 </td>
 <td style="text-align:right;">
-3278
+3839
 </td>
 </tr>
 <tr>
@@ -536,10 +537,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-5920
+6259
 </td>
 <td style="text-align:right;">
-3034
+3199
 </td>
 </tr>
 <tr>
@@ -547,10 +548,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-8108
+8375
 </td>
 <td style="text-align:right;">
-3740
+3883
 </td>
 </tr>
 <tr>
@@ -569,10 +570,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-7842
+8397
 </td>
 <td style="text-align:right;">
-4011
+4327
 </td>
 </tr>
 <tr>
@@ -580,10 +581,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-8528
+8558
 </td>
 <td style="text-align:right;">
-4187
+4203
 </td>
 </tr>
 <tr>
@@ -602,10 +603,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6173
+6255
 </td>
 <td style="text-align:right;">
-3174
+3231
 </td>
 </tr>
 <tr>
@@ -613,10 +614,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-9191
+9355
 </td>
 <td style="text-align:right;">
-4905
+5013
 </td>
 </tr>
 <tr>
@@ -624,10 +625,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-7305
+6935
 </td>
 <td style="text-align:right;">
-3588
+3420
 </td>
 </tr>
 <tr>
@@ -635,10 +636,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-6504
+6751
 </td>
 <td style="text-align:right;">
-3074
+3212
 </td>
 </tr>
 <tr>
@@ -646,10 +647,10 @@ Full-paper submission
 Full-paper submission
 </td>
 <td style="text-align:right;">
-3974
+3969
 </td>
 <td style="text-align:right;">
-1886
+1877
 </td>
 </tr>
 <tr>
@@ -657,10 +658,10 @@ Full-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3159
+3281
 </td>
 <td style="text-align:right;">
-1537
+1578
 </td>
 </tr>
 <tr>
@@ -668,10 +669,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4628
+4741
 </td>
 <td style="text-align:right;">
-2205
+2269
 </td>
 </tr>
 <tr>
@@ -690,10 +691,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2548
+2525
 </td>
 <td style="text-align:right;">
-1185
+1175
 </td>
 </tr>
 <tr>
@@ -701,10 +702,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3877
+3900
 </td>
 <td style="text-align:right;">
-1823
+1843
 </td>
 </tr>
 <tr>
@@ -712,10 +713,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4494
+4683
 </td>
 <td style="text-align:right;">
-2261
+2370
 </td>
 </tr>
 <tr>
@@ -723,10 +724,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1
+3476
 </td>
 <td style="text-align:right;">
-1
+1881
 </td>
 </tr>
 <tr>
@@ -734,10 +735,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3716
+3756
 </td>
 <td style="text-align:right;">
-1858
+1888
 </td>
 </tr>
 <tr>
@@ -745,10 +746,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3102
+3222
 </td>
 <td style="text-align:right;">
-1584
+1628
 </td>
 </tr>
 <tr>
@@ -756,10 +757,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3104
+3369
 </td>
 <td style="text-align:right;">
-1572
+1737
 </td>
 </tr>
 <tr>
@@ -767,18 +768,7 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2924
-</td>
-<td style="text-align:right;">
-1405
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:right;">
-3236
+3210
 </td>
 <td style="text-align:right;">
 1514
@@ -789,6 +779,17 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
+3048
+</td>
+<td style="text-align:right;">
+1503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -800,10 +801,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2992
+3252
 </td>
 <td style="text-align:right;">
-1528
+1676
 </td>
 </tr>
 <tr>
@@ -822,10 +823,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4420
+4417
 </td>
 <td style="text-align:right;">
-2162
+2165
 </td>
 </tr>
 <tr>
@@ -833,10 +834,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1277
+1604
 </td>
 <td style="text-align:right;">
-660
+828
 </td>
 </tr>
 <tr>
@@ -855,10 +856,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3135
+3219
 </td>
 <td style="text-align:right;">
-1601
+1669
 </td>
 </tr>
 <tr>
@@ -866,10 +867,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-6270
+6360
 </td>
 <td style="text-align:right;">
-3210
+3258
 </td>
 </tr>
 <tr>
@@ -877,10 +878,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3199
+3413
 </td>
 <td style="text-align:right;">
-1636
+1759
 </td>
 </tr>
 <tr>
@@ -888,10 +889,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2720
+2796
 </td>
 <td style="text-align:right;">
-1426
+1472
 </td>
 </tr>
 <tr>
@@ -899,10 +900,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1133
+1179
 </td>
 <td style="text-align:right;">
-572
+609
 </td>
 </tr>
 <tr>
@@ -910,10 +911,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4655
+4728
 </td>
 <td style="text-align:right;">
-2282
+2315
 </td>
 </tr>
 <tr>
@@ -921,10 +922,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1047
+1115
 </td>
 <td style="text-align:right;">
-562
+597
 </td>
 </tr>
 <tr>
@@ -932,10 +933,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1429
+2718
 </td>
 <td style="text-align:right;">
-760
+1343
 </td>
 </tr>
 <tr>
@@ -954,10 +955,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3642
+3691
 </td>
 <td style="text-align:right;">
-1750
+1786
 </td>
 </tr>
 <tr>
@@ -965,10 +966,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2448
+2643
 </td>
 <td style="text-align:right;">
-1301
+1420
 </td>
 </tr>
 <tr>
@@ -976,10 +977,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1823
+2203
 </td>
 <td style="text-align:right;">
-934
+1111
 </td>
 </tr>
 <tr>
@@ -1009,10 +1010,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2821
+2876
 </td>
 <td style="text-align:right;">
-1422
+1455
 </td>
 </tr>
 <tr>
@@ -1020,10 +1021,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3391
+3469
 </td>
 <td style="text-align:right;">
-1770
+1816
 </td>
 </tr>
 <tr>
@@ -1042,10 +1043,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3052
+3099
 </td>
 <td style="text-align:right;">
-1579
+1619
 </td>
 </tr>
 <tr>
@@ -1053,10 +1054,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3486
+3639
 </td>
 <td style="text-align:right;">
-1626
+1694
 </td>
 </tr>
 <tr>
@@ -1064,10 +1065,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2723
+2793
 </td>
 <td style="text-align:right;">
-1282
+1319
 </td>
 </tr>
 <tr>
@@ -1075,10 +1076,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3127
+3399
 </td>
 <td style="text-align:right;">
-1355
+1513
 </td>
 </tr>
 <tr>
@@ -1086,10 +1087,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3049
+3173
 </td>
 <td style="text-align:right;">
-1560
+1650
 </td>
 </tr>
 <tr>
@@ -1097,10 +1098,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3782
+4373
 </td>
 <td style="text-align:right;">
-1969
+2290
 </td>
 </tr>
 <tr>
@@ -1108,10 +1109,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3784
+3863
 </td>
 <td style="text-align:right;">
-1799
+1853
 </td>
 </tr>
 <tr>
@@ -1119,10 +1120,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3175
+3384
 </td>
 <td style="text-align:right;">
-1593
+1723
 </td>
 </tr>
 <tr>
@@ -1130,10 +1131,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3991
+4065
 </td>
 <td style="text-align:right;">
-1920
+1963
 </td>
 </tr>
 <tr>
@@ -1141,10 +1142,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2552
+2790
 </td>
 <td style="text-align:right;">
-1296
+1427
 </td>
 </tr>
 <tr>
@@ -1152,10 +1153,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-5069
+5167
 </td>
 <td style="text-align:right;">
-2636
+2702
 </td>
 </tr>
 <tr>
@@ -1163,10 +1164,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1104
+1146
 </td>
 <td style="text-align:right;">
-593
+616
 </td>
 </tr>
 <tr>
@@ -1185,10 +1186,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4161
+4164
 </td>
 <td style="text-align:right;">
-2295
+2290
 </td>
 </tr>
 <tr>
@@ -1196,10 +1197,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-4327
+4605
 </td>
 <td style="text-align:right;">
-2207
+2361
 </td>
 </tr>
 <tr>
@@ -1207,10 +1208,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-1372
+1444
 </td>
 <td style="text-align:right;">
-694
+744
 </td>
 </tr>
 <tr>
@@ -1218,10 +1219,10 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-3230
+3277
 </td>
 <td style="text-align:right;">
-1667
+1698
 </td>
 </tr>
 <tr>
@@ -1229,21 +1230,32 @@ Short-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-2669
+3074
 </td>
 <td style="text-align:right;">
-1309
+1500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:right;">
+553
+</td>
+<td style="text-align:right;">
+264
 </td>
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-Full-paper submission:24|Short-paper submission:53
+Full-paper submission:24|Short-paper submission:54
 </td>
 <td style="text-align:right;font-weight: bold;">
-327011
+342617
 </td>
 <td style="text-align:right;font-weight: bold;">
-162990
+171442
 </td>
 </tr>
 </tbody>
@@ -1258,7 +1270,7 @@ section?</h3>
 Paper Guidelines</a>, all authors must add a <em>Data and Software
 Availability</em> section to their paper. This detection naturally
 relies on the loaded texts <em>with</em> stop words.</p>
-<p>34 papers have the section in question, that is 44 % of all
+<p>38 papers have the section in question, that is 49 % of all
 submissions. Here are the statistics per submission type:</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -1286,10 +1298,10 @@ Full-paper submission
 24
 </td>
 <td style="text-align:right;">
-19
+20
 </td>
 <td style="text-align:right;">
-79.2
+83.3
 </td>
 </tr>
 <tr>
@@ -1297,13 +1309,13 @@ Full-paper submission
 Short-paper submission
 </td>
 <td style="text-align:right;">
-53
+54
 </td>
 <td style="text-align:right;">
-15
+18
 </td>
 <td style="text-align:right;">
-28.3
+33.3
 </td>
 </tr>
 </tbody>
@@ -1317,8 +1329,8 @@ The following table shows the first 800 characters of these sections.
 <p>For the following table and figure, the word stems were extracted
 based on a stemming algorithm from package <a
 href="https://cran.r-project.org/package=quanteda"><code>quanteda</code></a>.
-The word cloud is based on 332 unique words occuring each at least 100
-times, all in all occuring 74217 times which comprises 46 % of non-stop
+The word cloud is based on 353 unique words occuring each at least 100
+times, all in all occuring 79517 times which comprises 46 % of non-stop
 words.</p>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:320px; ">
@@ -1351,10 +1363,10 @@ n
 data
 </td>
 <td style="text-align:right;">
-2587
+2744
 </td>
 <td style="text-align:right;">
-74
+75
 </td>
 <td style="text-align:right;">
 96
@@ -1368,13 +1380,13 @@ data
 model
 </td>
 <td style="text-align:right;">
-1642
+1720
 </td>
 <td style="text-align:right;">
-66
+69
 </td>
 <td style="text-align:right;">
-86
+88
 </td>
 </tr>
 <tr>
@@ -1385,13 +1397,13 @@ model
 spatial
 </td>
 <td style="text-align:right;">
-1365
+1405
 </td>
 <td style="text-align:right;">
-70
+72
 </td>
 <td style="text-align:right;">
-91
+92
 </td>
 </tr>
 <tr>
@@ -1402,10 +1414,10 @@ spatial
 inform
 </td>
 <td style="text-align:right;">
-879
+897
 </td>
 <td style="text-align:right;">
-68
+69
 </td>
 <td style="text-align:right;">
 88
@@ -1419,10 +1431,10 @@ inform
 https
 </td>
 <td style="text-align:right;">
-817
+850
 </td>
 <td style="text-align:right;">
-61
+62
 </td>
 <td style="text-align:right;">
 79
@@ -1433,16 +1445,16 @@ https
 6
 </td>
 <td style="text-align:left;">
-user
+map
 </td>
 <td style="text-align:right;">
-791
+796
 </td>
 <td style="text-align:right;">
-48
+68
 </td>
 <td style="text-align:right;">
-62
+87
 </td>
 </tr>
 <tr>
@@ -1450,16 +1462,16 @@ user
 7
 </td>
 <td style="text-align:left;">
-map
+user
 </td>
 <td style="text-align:right;">
-783
+791
 </td>
 <td style="text-align:right;">
-67
+49
 </td>
 <td style="text-align:right;">
-87
+63
 </td>
 </tr>
 <tr>
@@ -1470,13 +1482,13 @@ map
 result
 </td>
 <td style="text-align:right;">
-724
+771
 </td>
 <td style="text-align:right;">
-70
+73
 </td>
 <td style="text-align:right;">
-91
+94
 </td>
 </tr>
 <tr>
@@ -1487,13 +1499,13 @@ result
 time
 </td>
 <td style="text-align:right;">
-678
+689
 </td>
 <td style="text-align:right;">
 62
 </td>
 <td style="text-align:right;">
-81
+79
 </td>
 </tr>
 <tr>
@@ -1504,10 +1516,10 @@ time
 featur
 </td>
 <td style="text-align:right;">
-659
+673
 </td>
 <td style="text-align:right;">
-43
+44
 </td>
 <td style="text-align:right;">
 56
@@ -1521,13 +1533,13 @@ featur
 studi
 </td>
 <td style="text-align:right;">
-632
+663
 </td>
 <td style="text-align:right;">
-63
+66
 </td>
 <td style="text-align:right;">
-82
+85
 </td>
 </tr>
 <tr>
@@ -1538,10 +1550,10 @@ studi
 dataset
 </td>
 <td style="text-align:right;">
-605
+642
 </td>
 <td style="text-align:right;">
-53
+54
 </td>
 <td style="text-align:right;">
 69
@@ -1555,10 +1567,10 @@ dataset
 locat
 </td>
 <td style="text-align:right;">
-573
+599
 </td>
 <td style="text-align:right;">
-57
+58
 </td>
 <td style="text-align:right;">
 74
@@ -1572,10 +1584,10 @@ locat
 method
 </td>
 <td style="text-align:right;">
-556
+578
 </td>
 <td style="text-align:right;">
-68
+69
 </td>
 <td style="text-align:right;">
 88
@@ -1589,13 +1601,13 @@ method
 learn
 </td>
 <td style="text-align:right;">
-554
+569
 </td>
 <td style="text-align:right;">
-54
+55
 </td>
 <td style="text-align:right;">
-70
+71
 </td>
 </tr>
 <tr>
@@ -1606,13 +1618,13 @@ learn
 doi.org
 </td>
 <td style="text-align:right;">
-541
+560
 </td>
 <td style="text-align:right;">
-44
+45
 </td>
 <td style="text-align:right;">
-57
+58
 </td>
 </tr>
 <tr>
@@ -1623,10 +1635,10 @@ doi.org
 system
 </td>
 <td style="text-align:right;">
-526
+538
 </td>
 <td style="text-align:right;">
-67
+68
 </td>
 <td style="text-align:right;">
 87
@@ -1640,10 +1652,10 @@ system
 geograph
 </td>
 <td style="text-align:right;">
-503
+533
 </td>
 <td style="text-align:right;">
-56
+57
 </td>
 <td style="text-align:right;">
 73
@@ -1657,13 +1669,13 @@ geograph
 imag
 </td>
 <td style="text-align:right;">
-473
+511
 </td>
 <td style="text-align:right;">
-39
+41
 </td>
 <td style="text-align:right;">
-51
+53
 </td>
 </tr>
 <tr>
@@ -1671,16 +1683,16 @@ imag
 20
 </td>
 <td style="text-align:left;">
-network
+research
 </td>
 <td style="text-align:right;">
-467
+494
 </td>
 <td style="text-align:right;">
-53
+66
 </td>
 <td style="text-align:right;">
-69
+85
 </td>
 </tr>
 </tbody>
@@ -1771,6 +1783,50 @@ all
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+5
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+9
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+10
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+244
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+28
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+8
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+310
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 Full-paper submission
 </td>
@@ -1822,50 +1878,6 @@ Full-paper submission
 TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-10
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-212
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-22
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-258
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
@@ -1887,7 +1899,7 @@ TRUE
 15
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-187
+188
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 4
@@ -1899,7 +1911,7 @@ TRUE
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-213
+214
 </td>
 </tr>
 <tr>
@@ -1975,19 +1987,63 @@ TRUE
 9
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-130
+132
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-22
+23
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-175
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+5
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+9
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+98
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+30
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+156
 </td>
 </tr>
 <tr>
@@ -2016,7 +2072,7 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-6
+4
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 103
@@ -2025,13 +2081,57 @@ TRUE
 7
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-12
+13
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 9
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-143
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+139
 </td>
 </tr>
 <tr>
@@ -2042,40 +2142,40 @@ Full-paper submission
 TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-9
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-6
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-89
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-27
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-140
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+25
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+16
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+69
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+8
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+5
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+128
 </td>
 </tr>
 <tr>
@@ -2123,94 +2223,6 @@ TRUE
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-16
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-14
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-74
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-120
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-112
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
 Full-paper submission
 </td>
@@ -2239,7 +2251,7 @@ FALSE
 4
 </td>
 <td style="text-align:right;">
-102
+103
 </td>
 <td style="text-align:right;">
 2
@@ -2251,7 +2263,7 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-110
+111
 </td>
 </tr>
 <tr>
@@ -2296,6 +2308,50 @@ TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+104
 </td>
 </tr>
 <tr>
@@ -2350,7 +2406,7 @@ Full-paper submission
 TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
+1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
@@ -2359,13 +2415,13 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
+6
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 4
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-21
+20
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 23
@@ -2374,65 +2430,21 @@ TRUE
 33
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
+8
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
+1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-101
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-67
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-92
+102
 </td>
 </tr>
 <tr>
 <td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Short-paper submission
+Full-paper submission
 </td>
 <td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
 TRUE
@@ -2447,31 +2459,31 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
+9
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-18
+67
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-47
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-14
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+20
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-90
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+101
 </td>
 </tr>
 <tr>
@@ -2494,27 +2506,203 @@ TRUE
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
+5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
+6
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-49
+50
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 25
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
+3
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
+4
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+7
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+51
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+12
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+7
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+17
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+50
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+14
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 89
 </td>
 </tr>
@@ -2526,10 +2714,10 @@ Full-paper submission
 TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
+1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
@@ -2538,72 +2726,72 @@ TRUE
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+63
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+12
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 6
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-50
+48
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 11
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-88
+7
 </td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Full-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-85
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+83
 </td>
 </tr>
 <tr>
@@ -2638,51 +2826,7 @@ FALSE
 56
 </td>
 <td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-84
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-75
-</td>
-<td style="text-align:right;">
-3
+21
 </td>
 <td style="text-align:right;">
 0
@@ -2692,94 +2836,6 @@ FALSE
 </td>
 <td style="text-align:right;">
 83
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
-39
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-83
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-6
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-47
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-11
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-82
 </td>
 </tr>
 <tr>
@@ -2808,7 +2864,7 @@ TRUE
 4
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
+4
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 40
@@ -2823,7 +2879,51 @@ TRUE
 5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-80
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+78
 </td>
 </tr>
 <tr>
@@ -2890,72 +2990,116 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+5
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+39
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+22
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-58
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-10
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-74
+73
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Short-paper submission
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
 </td>
-<td style="text-align:left;">
-FALSE
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
 </td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 4
 </td>
-<td style="text-align:right;">
-50
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
 </td>
-<td style="text-align:right;">
-7
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+8
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+13
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+38
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
 </td>
-<td style="text-align:right;">
-73
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+40
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+18
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+72
 </td>
 </tr>
 <tr>
@@ -2975,28 +3119,28 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-38
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-20
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
+1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+49
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+9
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 71
@@ -3040,186 +3184,10 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-69
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Short-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-6
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-48
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-7
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-67
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-48
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-9
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-8
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-13
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-37
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-66
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-6
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-49
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-4
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-66
+70
 </td>
 </tr>
 <tr>
@@ -3245,7 +3213,7 @@ TRUE
 1
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-14
+17
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
@@ -3263,7 +3231,51 @@ TRUE
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-66
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+50
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+67
 </td>
 </tr>
 <tr>
@@ -3311,50 +3323,6 @@ TRUE
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-53
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-63
-</td>
-</tr>
-<tr>
 <td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
 Short-paper submission
 </td>
@@ -3380,22 +3348,110 @@ TRUE
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+46
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+7
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-36
+<td style="text-align:right;">
+1
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-18
+<td style="text-align:right;">
+4
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-63
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+62
 </td>
 </tr>
 <tr>
@@ -3433,13 +3489,101 @@ FALSE
 10
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+14
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+27
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+6
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-63
+0
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+56
 </td>
 </tr>
 <tr>
@@ -3515,7 +3659,7 @@ TRUE
 13
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-14
+13
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 21
@@ -3524,7 +3668,7 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 55
@@ -3576,37 +3720,81 @@ FALSE
 </tr>
 <tr>
 <td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Full-paper submission
+Short-paper submission
 </td>
 <td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
 TRUE
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+32
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 16
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-11
+42
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-15
+2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
@@ -3638,71 +3826,71 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 2
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+3
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+30
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+10
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Full-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+2
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+16
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 5
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-40
+10
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
+14
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-50
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 49
 </td>
 </tr>
@@ -3767,50 +3955,6 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-37
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -3823,7 +3967,7 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-41
+40
 </td>
 <td style="text-align:right;">
 4
@@ -3835,51 +3979,7 @@ FALSE
 1
 </td>
 <td style="text-align:right;">
-47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-47
+46
 </td>
 </tr>
 <tr>
@@ -3902,72 +4002,28 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-2
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-3
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-22
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-14
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-42
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
-<td style="text-align:right;">
-0
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+5
 </td>
-<td style="text-align:right;">
-2
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+35
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
 </td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
-<td style="text-align:right;">
-41
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+43
 </td>
 </tr>
 <tr>
@@ -3999,7 +4055,71 @@ FALSE
 5
 </td>
 <td style="text-align:right;">
-36
+37
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
 </td>
 <td style="text-align:right;">
 0
@@ -4011,6 +4131,74 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+7
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+22
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+10
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 41
 </td>
 </tr>
@@ -4078,116 +4266,28 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+23
 </td>
 <td style="text-align:right;">
 7
 </td>
 <td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-39
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-Short-paper submission
-</td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 1
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-5
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-29
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-0
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
-</td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 38
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-36
 </td>
 </tr>
 <tr>
@@ -4222,7 +4322,7 @@ TRUE
 8
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-10
+9
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
@@ -4231,7 +4331,51 @@ TRUE
 0
 </td>
 <td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-34
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+33
 </td>
 </tr>
 <tr>
@@ -4342,19 +4486,19 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-0
+12
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:right;">
-11
+12
 </td>
 <td style="text-align:right;">
 0
@@ -4363,7 +4507,7 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-31
+28
 </td>
 </tr>
 <tr>
@@ -4383,30 +4527,74 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 3
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-10
+8
 </td>
 <td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+Short-paper submission
+</td>
+<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+TRUE
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+0
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+4
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+1
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 12
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+7
+</td>
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 0
 </td>
-<td style="text-align:right;">
+<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
 26
 </td>
 </tr>
@@ -4471,50 +4659,6 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-25
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -4543,46 +4687,46 @@ FALSE
 </td>
 </tr>
 <tr>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:left;">
 Short-paper submission
 </td>
-<td style="text-align:left;font-style: italic;background-color: #eeeeee !important;">
-TRUE
+<td style="text-align:left;">
+FALSE
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-1
+<td style="text-align:right;">
+4
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-10
+<td style="text-align:right;">
+6
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
-8
+<td style="text-align:right;">
+11
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-style: italic;background-color: #eeeeee !important;">
+<td style="text-align:right;">
 24
 </td>
 </tr>
@@ -4609,16 +4753,192 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-2
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Short-paper submission
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
-12
+6
 </td>
 <td style="text-align:right;">
 0
@@ -4627,7 +4947,7 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-22
+11
 </td>
 </tr>
 <tr>
@@ -4653,77 +4973,13 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
+9
 </td>
 <td style="text-align:right;">
 0
@@ -4735,75 +4991,7 @@ FALSE
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12
+10
 </td>
 </tr>
 <tr>
@@ -4848,138 +5036,6 @@ FALSE
 </td>
 <td style="text-align:right;">
 10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Short-paper submission
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-9
 </td>
 </tr>
 <tr>
@@ -5031,43 +5087,43 @@ FALSE
 Short-paper submission
 </td>
 <td style="text-align:left;">
-NA
+FALSE
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
 </tr>
 <tr>
@@ -5162,7 +5218,7 @@ NA
 <td style="text-align:left;font-weight: bold;">
 </td>
 <td style="text-align:left;font-weight: bold;">
-T:34|F:40
+T:38|F:38
 </td>
 <td style="text-align:right;font-weight: bold;">
 NA
@@ -5264,8 +5320,10 @@ The report should be based on a template from this repository in [`report-templa
 
 #### Overview and files
 
-Reproducibility reviewers have access to the submission and reviews through EasyChair.
-The following snippets helpt to create a shared Google Spreadsheet to manage the status of reproductions.
+Reproducibility reviewers (might not) have access to the submission and reviews through EasyChair.
+The following snippets help to create a shared Google Spreadsheet to manage the status of reproductions.
+
+The spreadsheet is privately shared at <https://docs.google.com/spreadsheets/d/16DuExJqtp_fI3FLlOWOVRZQXyOYU1W3FCm9dgLlfRqk/>.
 
 
 ```r
@@ -5293,6 +5351,47 @@ review_data_csv_file <- file.path(review_files_path, "review_data.csv")
 
 
 
+### Prepare CSV with titles and DOIs for publisher
+
+
+```r
+googlesheets4::range_read(
+  ss = "https://docs.google.com/spreadsheets/d/16DuExJqtp_fI3FLlOWOVRZQXyOYU1W3FCm9dgLlfRqk",
+  range =  "review_data!A:F"
+  ) %>%
+  select(`ID`, `Title`, `Report DOI`) %>%
+  filter(!is.na(`Report DOI`)) %>%
+  write.csv("AGILE-Reproducibility-Review_report-DOIs.csv", row.names = FALSE)
+```
+
+```
+## ! Using an auto-discovered, cached token.
+```
+
+```
+##   To suppress this message, modify your code or options to clearly consent to the use of a cached token.
+```
+
+```
+##   See gargle's "Non-interactive auth" vignette for more details:
+```
+
+```
+##   <https://gargle.r-lib.org/articles/non-interactive-auth.html>
+```
+
+```
+## ℹ The googlesheets4 package is using a cached token for 'daniel.nuest@gmail.com'.
+```
+
+```
+## ✓ Reading from "AGILE Reproducibility Reviews 2022".
+```
+
+```
+## ✓ Range ''review_data'!A:F'.
+```
+
 -->
 </div>
 <div id="reproducibility-reviewer-instructions" class="section level3">
@@ -5315,6 +5414,12 @@ assignments</li>
 <li>Don’t forget to take a look at the scientific reviews for comments
 on reproducibility; do <em>not</em> worry about the science or read the
 full paper, unless it really interests you</li>
+<li>Check the authors and their affiliations of the submission - is
+there a relation (e.g., former colleague, current supervisor) that may
+be seen as inappropriate for you as a reproducibility reviewer? Is there
+a conflict of interest? If so, please contact the reproducibility chair,
+and ask in the Discourse forum if another reproducibility reviewer would
+be available to switch assignments</li>
 <li>If code is available on GitHub/Lab, please fork the project into the
 <a href="https://github.com/reproducible-agile/">Reproducible AGILE
 organisation</a> respectively the <a
@@ -5338,21 +5443,35 @@ project for 2022 reproducibility reviews</a>
 <ul>
 <li>Use the European storage location, “Frankfurt”</li>
 <li>Name the component
-<code>Reproducibility review of: FULL PAPER TITLE</code></li>
-<li>Add all contributors to the project</li>
-<li>Add the to be expected DOI to your report</li>
+<code>Reproducibility review of: &lt;FULL PAPER TITLE HERE&gt;</code></li>
+<li>Add link to the OSF project in the master spreadsheet</li>
 <li>Keep the project <strong>private</strong> until the publication of
 the paper (we don’t want to announce anything that is not our place to
 announce)</li>
 <li>Wait for final paper citation from publisher and add it to the
 report</li>
+</ul></li>
+<li>In the OSF project for the reproducibility report
+<ul>
+<li>Add all <em>contributors</em> to the review to the project</li>
+<li>In the project <em>configuration</em>:
+<ul>
+<li>disable the “Wiki”, unless you add content to it</li>
+<li>set the category of repository to “Other”</li>
+</ul></li>
+<li>Add the to be expected DOI to your report and to the coordination
+spreadsheet: append the project ID of the OSF project in capitals to
+<code>10.17605/OSF.IO/</code> to guess the future DOI</li>
+</ul></li>
+<li><em>After</em> papers are published:
+<ul>
 <li>Upload the report and supplemental material created by you, if
 suitable also the original material (add <code>LICENSE.md</code> and
 licensing information in the OSF project description in that case)</li>
-<li>Publish the component and mint a DOI</li>
 <li>Upload a PDF of your report and any useful supplemental files</li>
+<li>Publish the component</li>
+<li>Mint a DOI (double check if it is correct)</li>
 </ul></li>
-<li>Add link to the OSF project in the master spreadsheet</li>
 </ol>
 </div>
 <div id="author-contact-templates" class="section level3">
@@ -5475,30 +5594,29 @@ href="https://choosealicense.com/licenses/apache-2.0/">Apache License
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] tabulizer_0.2.2    glue_1.6.2         rvest_1.0.2        xml2_1.3.3         httr_1.4.2        
-##  [6] kableExtra_1.3.4   googledrive_2.0.0  quanteda_3.2.1     here_1.0.1         wordcloud_2.6     
-## [11] RColorBrewer_1.1-3 tidytext_0.3.2     forcats_0.5.1      dplyr_1.0.8        purrr_0.3.4       
-## [16] readr_2.1.2        tidyr_1.2.0        tibble_3.1.6       ggplot2_3.3.5      tidyverse_1.3.1   
-## [21] stringr_1.4.0      pdftools_3.1.1    
+##  [1] tabulizer_0.2.2     glue_1.6.2          rvest_1.0.2         xml2_1.3.3          httr_1.4.2         
+##  [6] kableExtra_1.3.4    googlesheets4_1.0.0 googledrive_2.0.0   quanteda_3.2.1      here_1.0.1         
+## [11] wordcloud_2.6       RColorBrewer_1.1-3  tidytext_0.3.2      forcats_0.5.1       dplyr_1.0.8        
+## [16] purrr_0.3.4         readr_2.1.2         tidyr_1.2.0         tibble_3.1.6        ggplot2_3.3.5      
+## [21] tidyverse_1.3.1     stringr_1.4.0       pdftools_3.1.1     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] fs_1.5.2            bit64_4.0.5         lubridate_1.8.0     webshot_0.5.2       rprojroot_2.0.2    
-##  [6] SnowballC_0.7.0     bslib_0.3.1         tools_4.1.3         backports_1.4.1     utf8_1.2.2         
-## [11] R6_2.5.1            DBI_1.1.2           colorspace_2.0-3    withr_2.5.0         tidyselect_1.1.2   
-## [16] bit_4.0.4           curl_4.3.2          compiler_4.1.3      cli_3.2.0           labeling_0.4.2     
-## [21] sass_0.4.1          scales_1.1.1        askpass_1.1         rappdirs_0.3.3      systemfonts_1.0.4  
-## [26] digest_0.6.29       rmarkdown_2.13      svglite_2.1.0       pkgconfig_2.0.3     htmltools_0.5.2    
-## [31] highr_0.9           dbplyr_2.1.1        fastmap_1.1.0       rlang_1.0.2         readxl_1.3.1       
-## [36] rstudioapi_0.13     farver_2.1.0        jquerylib_0.1.4     generics_0.1.2      jsonlite_1.8.0     
-## [41] vroom_1.5.7         tokenizers_0.2.1    magrittr_2.0.2      Matrix_1.4-0        Rcpp_1.0.8.3       
-## [46] munsell_0.5.0       fansi_1.0.2         lifecycle_1.0.1     yaml_2.3.5          stringi_1.7.6      
-## [51] grid_4.1.3          parallel_4.1.3      crayon_1.5.0        lattice_0.20-45     haven_2.4.3        
-## [56] hms_1.1.1           knitr_1.37          pillar_1.7.0        stopwords_2.3       fastmatch_1.1-3    
-## [61] reprex_2.0.1        evaluate_0.15       qpdf_1.1            remotes_2.4.2       RcppParallel_5.1.5 
-## [66] modelr_0.1.8        tabulizerjars_1.0.1 selectr_0.4-2       vctrs_0.3.8         png_0.1-7          
-## [71] tzdb_0.2.0          cellranger_1.1.0    openssl_2.0.0       gtable_0.3.0        assertthat_0.2.1   
-## [76] xfun_0.30           mime_0.12           broom_0.7.12        janeaustenr_0.1.5   viridisLite_0.4.0  
-## [81] gargle_1.2.0        rJava_1.0-6         ellipsis_0.3.2</code></pre>
+##  [1] fs_1.5.2            lubridate_1.8.0     webshot_0.5.2       rprojroot_2.0.2     SnowballC_0.7.0    
+##  [6] tools_4.1.3         backports_1.4.1     bslib_0.3.1         utf8_1.2.2          R6_2.5.1           
+## [11] DBI_1.1.2           colorspace_2.0-3    withr_2.5.0         tidyselect_1.1.2    curl_4.3.2         
+## [16] compiler_4.1.3      cli_3.2.0           sass_0.4.1          scales_1.1.1        askpass_1.1        
+## [21] rappdirs_0.3.3      systemfonts_1.0.4   digest_0.6.29       svglite_2.1.0       rmarkdown_2.13     
+## [26] pkgconfig_2.0.3     htmltools_0.5.2     highr_0.9           dbplyr_2.1.1        fastmap_1.1.0      
+## [31] rlang_1.0.2         readxl_1.3.1        rstudioapi_0.13     jquerylib_0.1.4     generics_0.1.2     
+## [36] jsonlite_1.8.0      tokenizers_0.2.1    magrittr_2.0.2      Matrix_1.4-0        Rcpp_1.0.8.3       
+## [41] munsell_0.5.0       fansi_1.0.2         lifecycle_1.0.1     stringi_1.7.6       yaml_2.3.5         
+## [46] grid_4.1.3          crayon_1.5.0        lattice_0.20-45     haven_2.4.3         hms_1.1.1          
+## [51] knitr_1.37          pillar_1.7.0        stopwords_2.3       fastmatch_1.1-3     reprex_2.0.1       
+## [56] evaluate_0.15       qpdf_1.1            RcppParallel_5.1.5  modelr_0.1.8        tabulizerjars_1.0.1
+## [61] selectr_0.4-2       png_0.1-7           vctrs_0.3.8         tzdb_0.2.0          cellranger_1.1.0   
+## [66] openssl_2.0.0       gtable_0.3.0        rematch2_2.1.2      assertthat_0.2.1    xfun_0.30          
+## [71] broom_0.7.12        janeaustenr_0.1.5   viridisLite_0.4.0   rsconnect_0.8.25    gargle_1.2.0       
+## [76] rJava_1.0-6         ellipsis_0.3.2</code></pre>
 <p><strong>The used MRAN snapshot is <a
 href="https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
 class="uri">https://packagemanager.rstudio.com/cran/__linux__/focal/latest</a></strong>.</p>

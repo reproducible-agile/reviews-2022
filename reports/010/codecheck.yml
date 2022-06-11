@@ -1,0 +1,29 @@
+---
+version: https://codecheck.org.uk/spec/config/1.0/
+
+manifest:
+  - file: NA
+    comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
+
+paper:
+  title: "Optimizing Electric Vehicle Charging Schedules Based on Probabilistic Forecast of Individual Mobility"
+  authors:
+    - name: Haojun Cai
+    - name: Yanan Xin
+    - name: Henry Martin
+    - name: Martin Raubal
+  reference: https://doi.org/10.5194/agile-giss-3-3-2022
+
+codechecker:
+  - name: Carlos Granell
+    ORCID: 0000-0003-1004-9695
+
+report: https://doi.org/10.17605/OSF.IO/JDTN3
+summary: |
+    The authors included a link to an anonymous GitHb repository containing detailed instructions and an entry point (`main` script) to run the entire analysis.
+    The authors claimed that input data cannot be disclosed. They provided me a few synthetic input samples (CSV format) to run the probabilistic models and charging strategies for simulation and evaluation, so there are differences between the results of the reproduction and the ones in the original paper.
+    The reproduction described in this report uses the Python code provided.
+    Even though the reproduction exercise with synthetic data failed during the last step of the script, I consider the paper was partially reproducible based on the synthetic data.
+repository: https://github.com/HaojunCai/agile22_evprediction
+check_time: "2022-07-09 12:00:00"
+certificate: 2022-003

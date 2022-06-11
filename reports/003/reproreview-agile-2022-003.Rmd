@@ -1,0 +1,165 @@
+---
+title: "Reproducibility review of: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data"
+author: "Carlos Granell \\orcid{0000-0003-1004-9695}"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: false
+papersize: a4
+header-includes:
+  - |
+    % https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex/445583 (works with pdflatex)
+    \usepackage{scalerel}
+    \usepackage{tikz}
+    \usetikzlibrary{svg.path}
+    \definecolor{orcidlogocol}{HTML}{A6CE39}
+    \tikzset{
+      orcidlogo/.pic={
+        \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                     svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z     M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                     svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+      }
+    }
+    \newcommand\orcid[1]{\href{https://orcid.org/#1}{\raisebox{0.15 em}{\mbox{\scalerel*{
+    \begin{tikzpicture}[yscale=-1, transform shape]
+    \pic{orcidlogo};
+    \end{tikzpicture}
+    }{|}}}}}
+    \definecolor{agileblue}{RGB}{0,77,155}
+urlcolor: agileblue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r logo, eval=TRUE, echo=FALSE, message=FALSE, fig.align='center', out.width='0.3\\linewidth', fig.pos='H'}
+temp <- tempfile(fileext = ".pdf")
+download.file(url = "https://reproducible-agile.github.io/public/images/reproducible-AGILE-logo-square.pdf", destfile = temp)
+knitr::include_graphics(temp)
+```
+
+This report is part of the reproducibility review at the AGILE conference.
+For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
+This document is published on OSF at https://osf.io/djfc2/.
+To cite the report use
+
+> _Granell, C. (2022, May 10). Reproducilbility review of: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data. <https://doi.org/10.17605/OSF.IO/DJFC2>_
+
+# Reviewed paper
+
+> _Zhao, P., Li, A., Pilesjö, P., and Mansourian, A.: A machine learning based approach for predicting usage efficiency of shared e-scooters using vehicle availability data, AGILE GIScience Ser., 3, 20, <https://doi.org/10.5194/agile-giss-3-20-2022>_
+
+# Summary
+
+The provided workflow was **partially reproduced**. The authors provided a detailed description of the data sets in a Data and Software Availability section. Access to a processed data set of the e-scooter sharing vehicle data Service in Stockholm, Sweden, is provided along with Python scripts to run three machine learning methods: Logistic Regression (LR), Artificial Neural Network: Multilayer Perceptron (MLP), and Random Forest (RF). The implementation of these ML methods is based on the Python library `Scikit-learn`. 
+
+The reproduction described in this report uses the Python code provided in a Github repo. The results reported here refer to Figure 5, which is a bar chart comparing the performance evaluation metrics (accuracy, F1, precision and recall) of the three ML methods. Nevertheless, no code is provided to visually recreate the figure, but the scripts produce the required data to create that figure. For the rest of figures and tables, no code is provided.
+
+\clearpage
+
+# Reproducibility reviewer notes
+
+The original paper submission did not provide a link to a code/data repo, but it was added after contacting the authors. Starting with the repo <https://github.com/micromobility-research/usage_efficiency_prediction>, I downloaded the dataset and went to the steps below
+
+```{bash init, eval=FALSE, size="scriptsize"}
+git clone https://github.com/micromobility-research/usage_efficiency_prediction
+
+mkvirtualenv agile2022-003
+
+# Download dataset 'Stockholm_data_for_training.pkl' in agile2022-003
+
+pip install pandas geopandas sklearn scipy matplotlib seaborn eli5
+
+```
+
+Execution of the RL model with the provided dataset (blue bar in Figure 5)
+
+```{bash lr, eval=FALSE, size="scriptsize"}
+# in ./agile2022-003
+python3 LR.py
+
+X1: accuracy using user specific features = 63.17%
+[[ 19599  63539]
+ [ 14036 113468]]
+F1:
+0.7452472981271614
+precision:
+0.6410367951549939
+recall:
+0.889917179068892
+OK
+```
+
+Execution of the ANN model with the provided dataset (orange bar in Figure 5)
+
+```{bash ann, eval=FALSE, size="scriptsize"}
+# in ./agile2022-003
+python3 ANN.py
+
+X1: accuracy = 69.18%
+[[ 39744  43394]
+ [ 21525 105979]]
+F1:
+0.7655312647854462
+precision:
+0.7094923446673763
+recall:
+0.8311817668465303
+OK
+```
+
+Execution of the RF model with the provided dataset (green bar in Figure 5)
+```{bash rf, eval=FALSE, size="scriptsize"}
+# in ./agile2022-003
+python3 RF.py
+
+X1: accuracy using test = 71.23%
+[[ 43227  39911]
+ [ 20696 106808]]
+[0.0795066  0.06362379 0.10772698 0.11532842 0.04677267 0.11871834
+ 0.11085419 0.11827179 0.11544051 0.1237567 ]
+F1:
+0.7789864453382832
+precision:
+0.7279766083465673
+recall:
+0.8376835236541599
+```
+
+The results obtained, the performance evaluation metrics per each model, are consistent with the values charted in Figure 5. I did not recreate Figure 5 because no code is provided, even though I could code a similar barchart as the one in Figure 5. Yet, the `RF.py` script was killed and did not end properly. The second task of the script, which is aimed to create a boxplot to represent the feature importance of RF model (I guess, Figure 6) failed.
+
+\newpage
+
+# Comments to the authors
+
+- The provided scripts only generate the required data (printed in the console) for Figure 5. *I recommend adding a script to generate the actual bar chart depicted in Figure 5*.
+- Some scripts take some time. *I recommend adding estimated execution time to each script, as the ANN and RF scripts took a long time to execute.*
+- The README file of the github repo is minimal, limited to the abstract and a link to the dataset on a  Drive folder. *I recommend adding usage information to the README file to associate each script to the expected output in the paper, and to add a `requirement.txt` file or similar to indicate the required packages and their versions to run the analysis.*
+
+```{r, echo=FALSE, eval=FALSE, results='hide'}
+library("here")
+library("osfr") # See docs at https://docs.ropensci.org/osfr/
+# OSF_PAT is in .Renviron in parent directory
+# We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
+
+# retrieve project
+project <- osfr::osf_retrieve_node("djfc2")
+
+# upload files
+osfr::osf_upload(x = project,
+                 conflicts = "overwrite",
+                 path = c(list.files(here::here("003"),
+                                     pattern = ".*reproreview-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE),
+                          here::here("003", "codecheck.yml")
+                          )
+                 )
+```
