@@ -1,0 +1,8 @@
+scope;measurement;value
+all;MeanAbsolute2D;47.04541695711442
+all;RootMeanSquareError;70.48636112704867
+all;AgreementRate threshold;0.49127399650959860384
+isolated accommodation;MeanAbsolute2D;17.865509408428412
+isolated accommodation;RootMeanSquareError;29.904148454654052
+landform;MeanAbsolute2D;49.058929055015994
+landform;RootMeanSquareError;71.0794490696706

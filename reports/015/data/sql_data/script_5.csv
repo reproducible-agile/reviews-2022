@@ -1,0 +1,6 @@
+scope;measurement;value
+all;Mean Samal Distance;0.04825106457242582897
+all;RootMeanSquareError Samal Distance;0.13479073302179005295
+all;Agreement Rate Samal Distance;84.642233856893542757
+landform;Duplicate;0.03399071019473081329
+landform;RootMeanSquareError Samal Distance;0.10995122031049188414
