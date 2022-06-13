@@ -59,13 +59,16 @@ Zourlidou, S., Golze, J., and Sester, M.: Traffic Regulation Recognition using C
 
 # Summary
 
-The paper compares several models for traffic control recognition at junctions, which are built upon Random Forest and Gradient Boosting classifiers. The analysis makes use of 2 datasets, which correspond to the cities of Chicago and Hannover. The first dataset was published previously by Ahmed et al. (2014) and was made publicly available for the needs of this study through this link: [https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit](https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit). The data for Hannover were collected by the authors of the paper (as mentioned in Subsection 3.1) and have not been made openly available yet. The code were the analysis was based on, was also declared as intellectual property and thus, it is not publicly shared. However, the authors agreed to share confidentially all their materials with the Reproducibility Committee for the needs of the review. For the needs of this review, we reproduced all the Tables and Figures of *Section 5 - Results* and of the Appendix. The outcome of the review was discussed with the authors to resolve any dissimilarities and eventually the reproduced results were in accordance with the final uploaded version of the manuscript. Therefore, the reproduction of the paper is considered **successful**.
+The paper compares several models for traffic control recognition at junctions, which are built upon Random Forest and Gradient Boosting classifiers. The analysis makes use of 2 datasets, which correspond to the cities of Chicago and Hannover.  The authors agreed to share confidentially all their materials (data and code) with the Reproducibility Committee for the needs of the review. For the needs of this review, we reproduced all the Tables and Figures of *Section 5 - Results* and of the Appendix. The reproduced results were in accordance with the final uploaded version of the manuscript. Therefore, the reproduction of the paper is considered **successful**.
 
 \clearpage
 
 # Reproducibility reviewer notes
 
+The first dataset was published previously by Ahmed et al. (2014) and was made publicly available for the needs of this study through this link: [https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit](https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit). The data for Hannover were collected by the authors of the paper (as mentioned in Subsection 3.1) and have not been made openly available yet. The code were the analysis was based on, was also declared as intellectual property and thus, it is not publicly shared. 
+
 The implementation of the analysis is based on a PostgreSQL database with a PostGIS extension and on Jupyter notebooks. The PostgreSQL database holds the data that needs to be accessed and processed during various steps of the computational analysis, which is implemented entirely on Jupyter notebooks. In order to properly recreate the pipeline, detailed instructions about the installation of the necessary software were provided by the authors. The exact versions of the tools/environments that were used are listed below:
+
 - Windows 10 OS
 - pgAdmin4 6.8
 - PostgreSQL 13.7
@@ -76,12 +79,13 @@ The implementation of the analysis is based on a PostgreSQL database with a Post
 
 The pipeline of the workflow was not hard to reproduce. The authors took a couple of weeks to organize the materials properly and eventually responded with elaborate instructions that were easy to follow. The notebooks were structured in a sensible way that matches the way the results are presented in the paper and the reproduced figures and numbers were explicitly corresponding with the paper. A list of Python packages was not included in the materials. All the necessary Python packages were installed using Anaconda navigator, unless indicated otherwise by the instructions.
 
+
 ### Reproduced figures
 
-All the reproduced figures are listed below:
+All the reproduced figures were identical to the ones shown in the paper and they are listed below:
 
 ```{r, echo=FALSE,out.width="22%",fig.cap="Corresponds to Figure 5 of the reproduced paper",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c(c('./reproduced/Figure5a-SimplifiedRFHannover.png','./reproduced/Figure5b-DefaultRFHannover.png', './reproduced/Figure5c-SimplifiedGBHannover.png', './reproduced/Figure5d-DefaultGBHannover.png'),                       c('./reproduced/Figure5e-SimplifiedRFChicago.png','./reproduced/Figure5f-DefaultRFChicago.png', './reproduced/Figure5g-SimplifiedGBChicago.png', './reproduced/Figure5h-DefaultGBChicago.png')))
+knitr::include_graphics(c(c('./reproduced/Figure5a-SimplifiedRFHannover.png','./reproduced/Figure5b-DefaultRFHannover.png', './reproduced/Figure5c-SimplifiedGBHannover.png', './reproduced/Figure5d-DefaultGBHannover.png'), c('./reproduced/Figure5e-SimplifiedRFChicago.png','./reproduced/Figure5f-DefaultRFChicago.png', './reproduced/Figure5g-SimplifiedGBChicago.png', './reproduced/Figure5h-DefaultGBChicago.png')))
 ```
 ```{r, echo=FALSE,out.width="22%",fig.cap="Corresponds to Figure 6 of the reproduced paper",fig.show='hold',fig.align='center'}
 knitr::include_graphics(c('./reproduced/Figure6a-DynamicRFHannover.png','./reproduced/Figure6b-DynamicGBHannover.png', './reproduced/Figure6c-DynamicRFChicago.png', './reproduced/Figure6d-DynamicGBChicago.png'))
@@ -119,7 +123,14 @@ knitr::include_graphics(c('./reproduced/FigureE1a-Exp4.png','./reproduced/Figure
 ```
 ### Reproduced tables
 
-All the of the reproduced tables (namely Table 2, 3, 4, A1, B1 and D1) required combining the results of several different Jupyter notebooks in a manual fashion. Below are showcased the different chunks that correspond to the results presented in the paper's Tables in the form of screenshots:
+All the of the reproduced tables (namely Table 2, 3, 4, A1, B1 and D1) required combining the results of several different Jupyter notebooks in a manual fashion. The outcome of the reproduction was largely identical to the reported results, except for the following points:
+
+- Table 3: The Recall of the Hannover GB model.
+- Table 4: All performance metrics for Exp. 3.
+- Table A1: The support samples of the simplified GB model for Hannover was found (821, 1172, 864) and for Chicago was found (88, 134, 263).
+- Table D1: All performance metrics corresponding to Exp. 3 were found to be different.
+
+The above differences were discussed with the authors, who eventually uploaded a new version of the manuscript. Below are showcased the different chunks that correspond to the results presented in the paper's Tables in the form of screenshots:
 
 ```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Table 2 and Table A1 of the reproduced paper",fig.show='hold',fig.align='center'}
 knitr::include_graphics(c('./reproduced/Table2-TableA1-DefaultGBChicago.png','./reproduced/Table2-TableA1-DefaultGBHannover.png', './reproduced/Table2-TableA1-DefaultRFChicago.png', './reproduced/Table2-TableA1-DefaultRFHannover.png', './reproduced/Table2-TableA1-SimplifiedGBChicago.png','./reproduced/Table2-TableA1-SimplifiedGBHannover.png', './reproduced/Table2-TableA1-SimplifiedRFChicago.png', './reproduced/Table2-TableA1-SimplifiedRFHannover.png'))
