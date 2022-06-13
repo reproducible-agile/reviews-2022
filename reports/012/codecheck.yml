@@ -6,21 +6,28 @@ manifest:
     comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
 
 paper:
-  title: "<paper title here>"
+  title: "Exploratory Analysis and Feature Selection for the Prediction of Nitrogen Dioxide"
   authors:
-    - name: <first name last name author one>
-      ORCID: <ORCID one>
-    - name: <first last name author et al.>
-      ORCID: <ORCID et al.>
-  reference: https://doi.org/10.5194/agile-giss-3-...
+    - name: Ditsuhi Iskandaryan
+      ORCID: 0000-0001-6668-2700
+    - name: Silvana Di Sabatino
+      ORCID: 0000-0003-2716-9247
+    - name: Francisco Ramos
+      ORCID: 0000-0003-2540-4741
+    - name: Sergio Trilles
+      ORCID: 0000-0002-9304-0719
+  reference: https://doi.org/10.5194/agile-giss-3-6-2022
 
 codechecker:
-  - name: <name>
-    ORCID: <ORCID>
+  - name: Eftychia Koukouraki
+    ORCID: 0000-0003-0928-1139
 
-report: https://doi.org/10.17605/osf.io/...
+report: https://doi.org/10.17605/osf.io/W7VPH
 summary: |
-    ...
-repository: https://...
+    The paper evaluates the competence of selected features in the prediction of Nitrogen Dioxide with Machine Learning.
+    For this reproduciblity review, the Figures and Tables of "Section 5 - Experiments and Results" were considered, while the Figures of "Section 3 - Exploratory Analysis"" were not.
+    The code of the corresponding analysis was provided as a GitHub repository and the data that is necessary to run the code were provided through a Zenodo repository.
+    The reproduced results were in accordance with the ones reported in the paper, so the reproduction of the paper is considered successful.
+repository: https://github.com/Ditsuhi/ExploratoryAnalysis_FeatureSelection
 check_time: "2022-07-09 12:00:00"
-certificate: 2022-xxx
+certificate: 2022-006
