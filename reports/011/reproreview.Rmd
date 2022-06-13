@@ -1,0 +1,176 @@
+---
+title: "Reproducibility review of: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach"
+author: "Eftychia Koukouraki \\orcid{0000-0003-0928-1139}"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    toc: false
+papersize: a4
+header-includes:
+  - |
+    % https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex/445583 (works with pdflatex)
+    \usepackage{scalerel}
+    \usepackage{tikz}
+    \usetikzlibrary{svg.path}
+    \definecolor{orcidlogocol}{HTML}{A6CE39}
+    \tikzset{
+      orcidlogo/.pic={
+        \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                     svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z     M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                     svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+      }
+    }
+    \newcommand\orcid[1]{\href{https://orcid.org/#1}{\raisebox{0.15 em}{\mbox{\scalerel*{
+    \begin{tikzpicture}[yscale=-1, transform shape]
+    \pic{orcidlogo};
+    \end{tikzpicture}
+    }{|}}}}}
+    \definecolor{agileblue}{RGB}{0,77,155}
+urlcolor: agileblue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r logo, eval=TRUE, echo=FALSE, message=FALSE, fig.align='center', out.width='0.3\\linewidth', fig.pos='H'}
+temp <- tempfile(fileext = ".pdf")
+download.file(url = "https://reproducible-agile.github.io/public/images/reproducible-AGILE-logo-square.pdf", destfile = temp)
+knitr::include_graphics(temp)
+```
+
+This report is part of the reproducibility review at the AGILE conference.
+For more information see [https://reproducible-agile.github.io/](https://reproducible-agile.github.io/).
+This document is published on OSF at [https://osf.io/wncsm/](https://osf.io/wncsm/).
+To cite the report use
+
+Koukouraki, E. (2022, June).  Reproducibility review of: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach. [https://doi.org/10.17605/OSF.IO/WNCSM](https://doi.org/10.17605/OSF.IO/WNCSM)
+
+# Reviewed paper
+
+Zourlidou, S., Golze, J., and Sester, M.: Traffic Regulation Recognition using Crowd-Sensed GPS and Map Data: a Hybrid Approach, AGILE GIScience Ser., 3, 22, https://doi.org/10.5194/agile-giss-3-22-2022
+
+# Summary
+
+The paper compares several models for traffic control recognition at junctions, which are built upon Random Forest and Gradient Boosting classifiers. The analysis makes use of 2 datasets, which correspond to the cities of Chicago and Hannover.  The authors agreed to share confidentially all their materials (data and code) with the Reproducibility Committee for the needs of the review. For the needs of this review, we reproduced all the Tables and Figures of *Section 5 - Results* and of the Appendix. The reproduced results were in accordance with the final uploaded version of the manuscript. Therefore, the reproduction of the paper is considered **successful**.
+
+\clearpage
+
+# Reproducibility reviewer notes
+
+The first dataset was published previously by Ahmed et al. (2014) and was made publicly available for the needs of this study through this link: [https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit](https://drive.google.com/file/d/1GHtPpyoziF3hMV_LtyvTfnIBRQ8BdX_e/edit). The data for Hannover were collected by the authors of the paper (as mentioned in Subsection 3.1) and have not been made openly available yet. The code were the analysis was based on, was also declared as intellectual property and thus, it is not publicly shared. 
+
+The implementation of the analysis is based on a PostgreSQL database with a PostGIS extension and on Jupyter notebooks. The PostgreSQL database holds the data that needs to be accessed and processed during various steps of the computational analysis, which is implemented entirely on Jupyter notebooks. In order to properly recreate the pipeline, detailed instructions about the installation of the necessary software were provided by the authors. The exact versions of the tools/environments that were used are listed below:
+
+- Windows 10 OS
+- pgAdmin4 6.8
+- PostgreSQL 13.7
+- PostGIS 3.1.4
+- Anaconda Navigator 2.1.1
+- Jupyter Notebook 6.4.11
+- Python 3.9.12
+
+The pipeline of the workflow was not hard to reproduce. The authors took a couple of weeks to organize the materials properly and eventually responded with elaborate instructions that were easy to follow. The notebooks were structured in a sensible way that matches the way the results are presented in the paper and the reproduced figures and numbers were explicitly corresponding with the paper. A list of Python packages was not included in the materials. All the necessary Python packages were installed using Anaconda navigator, unless indicated otherwise by the instructions.
+
+
+### Reproduced figures
+
+All the reproduced figures were identical to the ones shown in the paper and they are listed below:
+
+```{r, echo=FALSE,out.width="22%",fig.cap="Corresponds to Figure 5 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c(c('./reproduced/Figure5a-SimplifiedRFHannover.png','./reproduced/Figure5b-DefaultRFHannover.png', './reproduced/Figure5c-SimplifiedGBHannover.png', './reproduced/Figure5d-DefaultGBHannover.png'), c('./reproduced/Figure5e-SimplifiedRFChicago.png','./reproduced/Figure5f-DefaultRFChicago.png', './reproduced/Figure5g-SimplifiedGBChicago.png', './reproduced/Figure5h-DefaultGBChicago.png')))
+```
+```{r, echo=FALSE,out.width="22%",fig.cap="Corresponds to Figure 6 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Figure6a-DynamicRFHannover.png','./reproduced/Figure6b-DynamicGBHannover.png', './reproduced/Figure6c-DynamicRFChicago.png', './reproduced/Figure6d-DynamicGBChicago.png'))
+```
+
+```{r, echo=FALSE,out.width="25%",fig.cap="Corresponds to Figure 7 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Figure7a.png','./reproduced/Figure7b.png'))
+```
+
+```{r, echo=FALSE,out.width="90%",fig.cap="Corresponds to Figure 8 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Figure8a.png','./reproduced/Figure8b.png'))
+```
+
+```{r, echo=FALSE,out.width="50%",fig.cap="Corresponds to Figure 9 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics('./reproduced/Figure9.png')
+```
+
+```{r, echo=FALSE,out.width="25%",fig.cap="Corresponds to Figure 10 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Figure10a-Exp4.png','./reproduced/Figure10b-Exp8.png'))
+```
+
+```{r, echo=FALSE,out.width="25%",fig.cap="Corresponds to Figure 10 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Figure10a-Exp4.png','./reproduced/Figure10b-Exp8.png'))
+```
+
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Figure A1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c(c('./reproduced/FigureA1a-SimplifiedGBHannover.png','./reproduced/FigureA1b-DefaultGBHannover.png'),           c('./reproduced/FigureA1c-SimplifiedRFChicago.png','./reproduced/FigureA1d-DefaultRFChicago.png')))
+```
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Figure C1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c(c('./reproduced/FigureC1a-DynamicRFHannover.png','./reproduced/FigureC1b-DynamicGBHannover.png'),           c('./reproduced/FigureC1c-DynamicRFChicago.png','./reproduced/FigureC1d-DynamicGBChicago.png')))
+```
+
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Figure E1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/FigureE1a-Exp4.png','./reproduced/FigureE1b-Exp8.png'))
+```
+### Reproduced tables
+
+All the of the reproduced tables (namely Table 2, 3, 4, A1, B1 and D1) required combining the results of several different Jupyter notebooks in a manual fashion. The outcome of the reproduction was largely identical to the reported results, except for the following points:
+
+- Table 3: The Recall of the Hannover GB model.
+- Table 4: All performance metrics for Exp. 3.
+- Table A1: The support samples of the simplified GB model for Hannover was found (821, 1172, 864) and for Chicago was found (88, 134, 263).
+- Table D1: All performance metrics corresponding to Exp. 3 were found to be different.
+
+The above differences were discussed with the authors, who eventually uploaded a new version of the manuscript. Below are showcased the different chunks that correspond to the results presented in the paper's Tables in the form of screenshots:
+
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Table 2 and Table A1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Table2-TableA1-DefaultGBChicago.png','./reproduced/Table2-TableA1-DefaultGBHannover.png', './reproduced/Table2-TableA1-DefaultRFChicago.png', './reproduced/Table2-TableA1-DefaultRFHannover.png', './reproduced/Table2-TableA1-SimplifiedGBChicago.png','./reproduced/Table2-TableA1-SimplifiedGBHannover.png', './reproduced/Table2-TableA1-SimplifiedRFChicago.png', './reproduced/Table2-TableA1-SimplifiedRFHannover.png'))
+```
+
+
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Table 3 and Table D1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Table3-TableB1-DynamicGBChicago.png','./reproduced/Table3-TableB1-DynamicGBHannover.png', './reproduced/Table3-TableB1-DynamicRFChicago.png', './reproduced/Table3-TableB1-DynamicRFHannover.png'))
+```
+
+
+```{r, echo=FALSE,out.width="40%",fig.cap="Corresponds to Table 4 and Table D1 of the reproduced paper",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c('./reproduced/Table4-TableD1-Exp1.png','./reproduced/Table4-TableD1-Exp2.png', './reproduced/Table4-TableD1-Exp3.png', './reproduced/Table4-TableD1-Exp4.png', './reproduced/Table4-TableD1-Exp5.png','./reproduced/Table4-TableD1-Exp6.png', './reproduced/Table4-TableD1-Exp7.png', './reproduced/Table4-TableD1-Exp8.png'))
+```
+
+
+```{r, echo=FALSE, eval=FALSE, results='hide'}
+# create ZIP of reproduction files and upload to OSF
+library("zip")
+library("here")
+
+zipfile <- here::here("PATH/agile-reproreview-YEAR-NUMBER.zip")
+file.remove(zipfile)
+zip::zipr(zipfile,
+          here::here("2020-018/files to add to the zip, if any"))
+
+library("osfr") # See docs at https://docs.ropensci.org/osfr/
+# OSF_PAT is in .Renviron in parent directory
+# We cannot use osfr to create a new component (with osfr::osf_create_component(x = osfr::osf_retrieve_node("6k5fh"), ...) because that will set the storage location to outside Europe.
+
+# retrieve project
+project <- osfr::osf_retrieve_node("OSF ID")
+
+# upload files
+osfr::osf_upload(x = project,
+                 conflicts = "overwrite",
+                 path = c(list.files(here::here("PATH"),
+                                     pattern = "agile-reproreview-.*(pdf$|Rmd$|zip$)",
+                                     full.names = TRUE),
+                          "COPYRIGHT"
+                          )
+                 )
+```
