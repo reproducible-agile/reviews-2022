@@ -6,21 +6,23 @@ manifest:
     comment: "The AGILE 2022 Reproducibility Review did not include manifest documentation, see https://github.com/codecheckers/register/issues/38"
 
 paper:
-  title: "<paper title here>"
+  title: "What are intersections for pedestrian users?"
   authors:
-    - name: <first name last name author one>
-      ORCID: <ORCID one>
-    - name: <first last name author et al.>
-      ORCID: <ORCID et al.>
-  reference: https://doi.org/10.5194/agile-giss-3-...
+    - name: Jean-Marie Favreau
+    - name: Jérémy Kalsron
+  reference: https://doi.org/10.5194/agile-giss-3-4-2022
 
 codechecker:
-  - name: <name>
-    ORCID: <ORCID>
+  - name: Eleni Tomai
+    ORCID: 0000-0003-1162-7389
 
-report: https://doi.org/10.17605/osf.io/...
+report: https://doi.org/10.17605/osf.io/XPG6Y
 summary: |
-    ...
-repository: https://...
+    The updated submission contains a DASA section and links to two repositories on GitHub, which have been updated by the author during the reproducibility review process.
+    The first repository contains all necessary files and code for implementing the segmentation process, while the second, comprises all files necessary for using the evaluation tool.
+    The reproduction was successful.
+repository:
+    - https://github.com/jmtrivial/crossroads-segmentation/releases/tag/agile-2022
+    - https://github.com/jmtrivial/crossroads-evaluation/releases/tag/agile-2022
 check_time: "2021-07-09 12:00:00"
-certificate: 2022-xxx
+certificate: 2022-004

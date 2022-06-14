@@ -9,15 +9,15 @@ paper:
   title: '"Landmark Route": A Comparison to the Shortest Route'
   authors:
     - name:  Eva Nuhn 
-      ORCID: https://orcid.org/0000-0003-2443-8122
+      ORCID: 0000-0003-2443-8122
     - name: Franziska König
     - name: Sabine Timpf
-      ORCID: https://orcid.org/0000-0002-7964-4110
+      ORCID: 0000-0002-7964-4110
   reference: https://doi.org/10.5194/agile-giss-3-12-2022
 
 codechecker:
   - name: Frank O. Ostermann
-    ORCID: https://orcid.org/0000-0002-9317-8291
+    ORCID: 0000-0002-9317-8291
 
 report: https://doi.org/10.17605/osf.io/94vnx
 summary: |

@@ -9,13 +9,13 @@ paper:
   title: "A method to produce metadata describing and assessing the quality of spatial landmark datasets in mountain area"
   authors:
     - name: Marie-Dominique Van Damme
-      ORCID: https://orcid.org/0000-0002-0007-5972
+      ORCID: 0000-0002-0007-5972
     - name: Ana-Maria Olteanu-Raimond
   reference: https://doi.org/10.5194/agile-giss-3-17-2022
 
 codechecker:
   - name: Philipp A. Friese
-    ORCID: https://orcid.org/0000-0002-3124-5364
+    ORCID: 0000-0002-3124-5364
 
 report: https://doi.org/10.17605/osf.io/6s2gp
 summary: |

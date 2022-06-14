@@ -9,14 +9,14 @@ paper:
   title: "Unlocking social network analysis methods for studying human mobility"
   authors:
     - name:  Nina Wiedemann 
-      ORCID: https://orcid.org/0000-0002-8160-7634
+      ORCID: 0000-0002-8160-7634
     - name: Henry Martin 
     - name: Martin Raubal
   reference: https://doi.org/10.5194/agile-giss-3-19-2022
 
 codechecker:
   - name: Jakub Krukar
-    ORCID: https://orcid.org/0000-0003-2615-8757
+    ORCID: 0000-0003-2615-8757
 
 report: https://doi.org/10.17605/osf.io/mvqcw
 summary: |

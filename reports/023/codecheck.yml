@@ -12,15 +12,15 @@ paper:
     - name: Majid Farhadloo
     - name: Yan Li
     - name: Jayant Gupta
-      ORCID: https://orcid.org/0000-0001-7028-9928
+      ORCID: 0000-0001-7028-9928
     - name: Aditya Kulkarni
-      ORCID: https://orcid.org/0000-0001-8981-6417
+      ORCID: 0000-0001-8981-6417
     - name: Shashi Shekhar
   reference: https://doi.org/10.5194/agile-giss-3-14-2022
 
 codechecker:
   - name: Philipp A. Friese
-    ORCID: https://orcid.org/0000-0002-3124-5364
+    ORCID: 0000-0002-3124-5364
 
 report: https://doi.org/10.17605/osf.io/kf8sr
 summary: |
