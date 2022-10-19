@@ -24,5 +24,5 @@ summary: |
 repository:
     - https://github.com/jmtrivial/crossroads-segmentation/releases/tag/agile-2022
     - https://github.com/jmtrivial/crossroads-evaluation/releases/tag/agile-2022
-check_time: "2021-07-09 12:00:00"
+check_time: "2022-07-09 12:00:00"
 certificate: 2022-004

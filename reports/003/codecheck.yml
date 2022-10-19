@@ -26,5 +26,5 @@ summary: |
     Nevertheless, no code is provided to visually recreate the figure, but the scripts produce the required data to create that figure. 
     For the rest of figures and tables, no code is provided.
 repository: https://github.com/micromobility-research/usage_efficiency_prediction
-check_time: "2021-07-09 12:00:00"
+check_time: "2022-07-09 12:00:00"
 certificate: 2022-016
